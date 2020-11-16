@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="myName"
+            type="com.chunchiehliang.aboutme.MyName" />
     </data>
 
     <LinearLayout
@@ -19,7 +22,7 @@
             style="@style/NameStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name"
+            android:text="@{myName.name}"
             android:textAlignment="center" />
 
         <EditText
@@ -47,7 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:text="@{@{myName.nickname}}"/>
 
         <ImageView
             android:id="@+id/star_image"
