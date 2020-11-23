@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Timber.plant(DebugTree())
         Timber.i("onCreate called")
 
         // Use Data Binding to get reference to the views
@@ -89,6 +88,31 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     override fun onStart() {
         super.onStart()
         Timber.i("onStart called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Timber.i("onRestart")
     }
 
     /**
