@@ -50,8 +50,9 @@ class GameFragment : Fragment() {
                 false
         )
 
-        Log.i("GameFragment", "Called ViewModelProvider()")
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+
+        binding.gameViewModel = viewModel
 
         viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
             binding.wordText.text = newWord
@@ -71,13 +72,6 @@ class GameFragment : Fragment() {
         viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
             binding.timerText.text = DateUtils.formatElapsedTime(newTime)
         })
-
-        binding.correctButton.setOnClickListener {
-            viewModel.onCorrect()
-        }
-        binding.skipButton.setOnClickListener {
-            viewModel.onSkip()
-        }
 
         return binding.root
 
