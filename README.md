@@ -8,3 +8,4 @@
 4. Trivia: Navigation
 5. DessertPusher: Lifecycle
 6. GuessIt: MVVM (LiveData, ViewModel, DataBinding)
+7. SleepTracker: Persistence
