@@ -1,6 +1,5 @@
 package com.example.android.trackmysleepquality.sleeptracker
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +41,7 @@ class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>() {
             3 -> R.drawable.ic_sleep_3
             4 -> R.drawable.ic_sleep_4
             5 -> R.drawable.ic_sleep_5
-            else -> R.drawable.ic_sleep_5
+            else -> R.drawable.ic_sleep_active
         })
     }
 
@@ -52,8 +51,6 @@ class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>() {
         val sleepLength: TextView = itemView.findViewById(R.id.sleep_length)
         val quality: TextView = itemView.findViewById(R.id.quality_string)
         val qualityImage: ImageView = itemView.findViewById(R.id.quality_image)
-
-
     }
 }
 
