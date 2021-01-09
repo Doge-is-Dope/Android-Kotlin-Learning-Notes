@@ -49,13 +49,12 @@ private val retrofit = Retrofit.Builder()
  */
 interface MarsApiService {
     /**
-     * Returns a Retrofit callback that delivers a [List] of [MarsProperty]
+     * Returns a Coroutine [List] of [MarsProperty] which can be fetched with await() if in a Coroutine scope.
      * The @GET annotation indicates that the "realestate" endpoint will be requested with the GET
      * HTTP method
      */
     @GET("realestate")
-    fun getProperties():
-            Call<List<MarsProperty>>
+    suspend fun getProperties(): List<MarsProperty>
 }
 
 /**
