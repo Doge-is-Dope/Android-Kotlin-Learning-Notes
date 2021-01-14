@@ -8,5 +8,6 @@
 4. Trivia: Navigation
 5. DessertPusher: Lifecycle
 6. GuessIt: MVVM (LiveData, ViewModel, DataBinding)
-7. SleepTracker: Persistence, Coroutines, RecyclerView
-8. MarsRealEstate: Retrofit, Moshi, Glide
+7. SleepTracker: Persistence(Room), Coroutines, RecyclerView
+8. MarsRealEstate: Retrofit, Moshi, Glide, RecyclerView
+9. DevBytes: Offline caching(Room), Repository, WorkManager
