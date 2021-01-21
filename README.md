@@ -11,3 +11,4 @@
 7. SleepTracker: Persistence(Room), Coroutines, RecyclerView
 8. MarsRealEstate: Retrofit, Moshi, Glide, RecyclerView
 9. DevBytes: Offline caching(Room), Repository, WorkManager
+10. GDGFinder: Design and styling
