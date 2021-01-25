@@ -1,10 +1,7 @@
 package com.example.android.gdgfinder.search
 
 import android.location.Location
-import com.example.android.gdgfinder.network.GdgApiService
-import com.example.android.gdgfinder.network.GdgChapter
-import com.example.android.gdgfinder.network.GdgResponse
-import com.example.android.gdgfinder.network.LatLong
+import com.example.android.gdgfinder.network.*
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -144,16 +141,23 @@ class GdgChapterRepository(gdgApiService: GdgApiService) {
              * @param response the response to sort
              * @param location the location to sort by, if null the data will not be sorted.
              */
-            suspend fun from(response: GdgResponse, location: Location?): SortedData {
+            suspend fun from(response:  List<GdgChapterRegion>, location: Location?): SortedData {
                 return withContext(Dispatchers.Default) {
                     // this sorting is too expensive to do on the main thread, so do thread confinement here.
-                    val chapters: List<GdgChapter> = response.chapters.sortByDistanceFrom(location)
+                    response.forEach {
+                        val sortedChapters = it.chapters.sortByDistanceFrom(location)
+                        with(it.chapters.toMutableList()) {
+                            clear()
+                            addAll(sortedChapters)
+                        }
+                    }
                     // use distinctBy which will maintain the input order - this will have the effect of making
                     // a filter list sorted by the distance from the current location
-                    val filters: List<String> = chapters.map { it.region } .distinctBy { it }
+                    val filters: List<String> = response.map { it.title }
                     // group the chapters by region so that filter queries don't require any work
-                    val chaptersByRegion: Map<String, List<GdgChapter>> = chapters.groupBy { it.region }
+                    val chaptersByRegion: Map<String, List<GdgChapter>> = response.associateBy({ it.title }, { it.chapters })
                     // return the sorted result
+                    val chapters = response.map { it.chapters }.flatten()
                     SortedData(chapters, filters, chaptersByRegion)
                 }
 
