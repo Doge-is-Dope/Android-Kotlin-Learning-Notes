@@ -48,8 +48,16 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         PendingIntent.FLAG_UPDATE_CURRENT
     )
 
+    // Get a image from resource
+    val eggImage = BitmapFactory.decodeResource(
+        applicationContext.resources,
+        R.drawable.cooked_egg
+    )
 
-    // TODO: Step 2.0 add style
+    // Create BigPictureStyle
+    val bigPicStyle = NotificationCompat.BigPictureStyle()
+        .bigPicture(eggImage)
+        .bigLargeIcon(null)
 
     // TODO: Step 2.2 add snooze action
 
@@ -62,13 +70,11 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         .setSmallIcon(R.drawable.cooked_egg)
         .setContentIntent(contentPendingIntent)
         .setAutoCancel(true)
+        .setStyle(bigPicStyle)
+        .setLargeIcon(eggImage)
 
     // TODO: Step 1.8 use the new 'breakfast' notification channel
 
-
-    // TODO: Step 1.13 set content intent
-
-    // TODO: Step 2.1 add style to builder
 
     // TODO: Step 2.3 add snooze action
 
