@@ -12,4 +12,4 @@
 8. MarsRealEstate: Retrofit, Moshi, Glide, RecyclerView
 9. DevBytes: Offline caching(Room), Repository, WorkManager
 10. GDGFinder: Design and styling
-11. EggTimer: Notifications
+11. EggTimer: Notifications, Intent, BroadcastReceiver
