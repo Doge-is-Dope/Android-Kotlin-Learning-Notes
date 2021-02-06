@@ -65,7 +65,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         applicationContext,
         REQUEST_CODE,
         snoozeIntent,
-        0,
+        FLAGS,
     )
 
 
