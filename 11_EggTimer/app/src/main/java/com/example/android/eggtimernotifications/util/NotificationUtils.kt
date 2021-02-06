@@ -65,7 +65,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         applicationContext,
         REQUEST_CODE,
         snoozeIntent,
-        PendingIntent.FLAG_ONE_SHOT
+        0,
     )
 
 
@@ -85,11 +85,9 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
             applicationContext.getString(R.string.snooze),
             snoozePendingIntent
         )
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
 
     // TODO: Step 1.8 use the new 'breakfast' notification channel
-
-
-    // TODO: Step 2.5 set priority
 
     notify(NOTIFICATION_ID, builder.build())
 }
