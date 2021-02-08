@@ -61,7 +61,7 @@ class EggTimerFragment : Fragment() {
         )
 
         subscribeTopic()
-        
+
         return binding.root
     }
 
