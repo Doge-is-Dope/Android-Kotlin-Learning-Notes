@@ -87,7 +87,6 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         )
         .setPriority(NotificationCompat.PRIORITY_HIGH)
 
-    // TODO: Step 1.8 use the new 'breakfast' notification channel
 
     notify(NOTIFICATION_ID, builder.build())
 }
