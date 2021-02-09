@@ -13,3 +13,4 @@
 9. DevBytes: Offline caching(Room), Repository, WorkManager
 10. GDGFinder: Design and styling
 11. EggTimer: Notifications, Intent, BroadcastReceiver
+12. FanController: Custom view
