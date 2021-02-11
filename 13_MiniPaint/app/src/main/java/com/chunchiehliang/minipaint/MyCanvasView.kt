@@ -3,8 +3,11 @@ package com.chunchiehliang.minipaint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
+
+private const val STROKE_WIDTH = 12f // has to be float
 
 class MyCanvasView(context: Context) : View(context) {
 
@@ -13,6 +16,21 @@ class MyCanvasView(context: Context) : View(context) {
     private lateinit var extraBitmap: Bitmap
 
     private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
+
+    private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
+
+    // Set up the paint with which to draw.
+    private val paint = Paint().apply {
+        color = drawColor
+        // Smooths out edges of what is drawn without affecting shape.
+        isAntiAlias = true
+        // Dithering affects how colors with higher-precision than the device are down-sampled.
+        isDither = true
+        style = Paint.Style.STROKE // default: FILL
+        strokeJoin = Paint.Join.ROUND // default: MITER
+        strokeCap = Paint.Cap.ROUND // default: BUTT
+        strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
+    }
 
     // This callback method is called by the Android system with the changed screen dimensions,
     // that is, with a new width and height (to change to) and the old width and height (to change from)
