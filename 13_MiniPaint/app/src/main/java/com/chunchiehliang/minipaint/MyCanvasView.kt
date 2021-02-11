@@ -1,10 +1,7 @@
 package com.chunchiehliang.minipaint
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -47,6 +44,8 @@ class MyCanvasView(context: Context) : View(context) {
 
     private val touchTolerance = ViewConfiguration.get(context).scaledTouchSlop
 
+    private lateinit var frame: Rect
+
     // This callback method is called by the Android system with the changed screen dimensions,
     // that is, with a new width and height (to change to) and the old width and height (to change from)
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
@@ -59,6 +58,10 @@ class MyCanvasView(context: Context) : View(context) {
         extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         extraCanvas = Canvas(extraBitmap)
         extraCanvas.drawColor(backgroundColor)
+
+        // Calculate a rectangular frame around the picture.
+        val inset = 40
+        frame = Rect(inset, inset, width - inset, height - inset)
     }
 
     // Override onDraw() and draw the contents of the cached extraBitmap
@@ -69,6 +72,9 @@ class MyCanvasView(context: Context) : View(context) {
         // Provide the bitmap, the x and y coordinates (in pixels) of the top left corner,
         // and null for the Paint
         canvas.drawBitmap(extraBitmap, 0f, 0f, null)
+
+        // Draw a frame around the canvas.
+        canvas.drawRect(frame, paint)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
