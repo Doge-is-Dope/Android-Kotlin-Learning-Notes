@@ -24,6 +24,9 @@ class MyCanvasView(context: Context) : View(context) {
     private var motionTouchEventX = 0f
     private var motionTouchEventY = 0f
 
+    private var currentX = 0f
+    private var currentY = 0f
+
     // Set up the paint with which to draw.
     private val paint = Paint().apply {
         color = drawColor
@@ -77,7 +80,12 @@ class MyCanvasView(context: Context) : View(context) {
         return true
     }
 
-    private fun touchStart() {}
+    private fun touchStart() {
+        path.reset()
+        path.moveTo(motionTouchEventX, motionTouchEventY)
+        currentX = motionTouchEventX
+        currentY = motionTouchEventY
+    }
 
     private fun touchMove() {}
 
