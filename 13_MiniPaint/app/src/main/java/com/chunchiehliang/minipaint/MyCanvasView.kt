@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 
 private const val STROKE_WIDTH = 12f // has to be float
@@ -43,6 +44,8 @@ class MyCanvasView(context: Context) : View(context) {
     // Create a object to store the path that is being drawn
     // when following the user's touch on the screen
     private var path = Path()
+
+    private val touchTolerance = ViewConfiguration.get(context).scaledTouchSlop
 
     // This callback method is called by the Android system with the changed screen dimensions,
     // that is, with a new width and height (to change to) and the old width and height (to change from)
@@ -87,7 +90,35 @@ class MyCanvasView(context: Context) : View(context) {
         currentY = motionTouchEventY
     }
 
-    private fun touchMove() {}
+    private fun touchMove() {
+        // Calculate the distance that has been moved (dx, dy)
+        val dx = Math.abs(motionTouchEventX - currentX)
+        val dy = Math.abs(motionTouchEventY - currentY)
 
-    private fun touchUp() {}
+        // If the movement was further than the touch tolerance, add a segment to the path.
+        if (dx >= touchTolerance || dy >= touchTolerance) {
+            // QuadTo() adds a quadratic bezier from the last point, approaching control point (x1,y1), and ending at (x2,y2)
+            // Using quadTo() instead of lineTo() create a smoothly drawn line without corners.
+            path.quadTo(
+                currentX,
+                currentY,
+                (motionTouchEventX + currentX) / 2,
+                (motionTouchEventY + currentY) / 2
+            )
+
+            // Set the starting point for the next segment to the endpoint of this segment.
+            currentX = motionTouchEventX
+            currentY = motionTouchEventY
+            // Draw the path in the extra bitmap to cache it.
+            extraCanvas.drawPath(path, paint)
+        }
+
+        // Call invalidate() to (eventually call onDraw() and) redraw the view.
+        invalidate()
+    }
+
+    private fun touchUp() {
+        // Reset the path so it doesn't get drawn again.
+        path.reset()
+    }
 }
