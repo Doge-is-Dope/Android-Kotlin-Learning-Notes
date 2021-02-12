@@ -86,10 +86,10 @@ class ClippedView @JvmOverloads constructor(
         )
     }
 
-    private fun drawBackAndUnclippedRectangle(canvas: Canvas){
+    private fun drawBackAndUnclippedRectangle(canvas: Canvas) {
         canvas.drawColor(Color.GRAY)
         canvas.save()
-        canvas.translate(columnOne,rowOne)
+        canvas.translate(columnOne, rowOne)
         drawClippedRectangle(canvas)
         canvas.restore()
     }
@@ -97,10 +97,10 @@ class ClippedView @JvmOverloads constructor(
     private fun drawDifferenceClippingExample(canvas: Canvas) {
         canvas.save()
         // Move the origin to the right for the next rectangle.
-        canvas.translate(columnTwo,rowOne)
+        canvas.translate(columnTwo, rowOne)
         // Use the subtraction of two clipping rectangles to create a frame.
         canvas.clipRect(
-            2 * rectInset,2 * rectInset,
+            2 * rectInset, 2 * rectInset,
             clipRectRight - 2 * rectInset,
             clipRectBottom - 2 * rectInset
         )
@@ -110,14 +110,14 @@ class ClippedView @JvmOverloads constructor(
         // which is currently available in API level 26 and higher.
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
             canvas.clipRect(
-                4 * rectInset,4 * rectInset,
+                4 * rectInset, 4 * rectInset,
                 clipRectRight - 4 * rectInset,
                 clipRectBottom - 4 * rectInset,
                 Region.Op.DIFFERENCE
             )
         else {
             canvas.clipOutRect(
-                4 * rectInset,4 * rectInset,
+                4 * rectInset, 4 * rectInset,
                 clipRectRight - 4 * rectInset,
                 clipRectBottom - 4 * rectInset
             )
@@ -127,6 +127,27 @@ class ClippedView @JvmOverloads constructor(
     }
 
     private fun drawCircularClippingExample(canvas: Canvas) {
+
+        canvas.save()
+        canvas.translate(columnOne, rowTwo)
+        // Clears any lines and curves from the path but unlike reset(),
+        // keeps the internal data structure for faster reuse.
+        path.rewind()
+        path.addCircle(
+            circleRadius, clipRectBottom - circleRadius,
+            circleRadius, Path.Direction.CCW
+        )
+        // The method clipPath(path, Region.Op.DIFFERENCE) was deprecated in
+        // API level 26. The recommended alternative method is
+        // clipOutPath(Path), which is currently available in
+        // API level 26 and higher.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            canvas.clipPath(path, Region.Op.DIFFERENCE)
+        } else {
+            canvas.clipOutPath(path)
+        }
+        drawClippedRectangle(canvas)
+        canvas.restore()
     }
 
     private fun drawIntersectionClippingExample(canvas: Canvas) {
