@@ -16,3 +16,4 @@
 12. FanController: Custom view
 13. MiniPaint: Draw on canvas
 14. ClippingExample: Clipping
+15. PropertyAnimation: Animation
