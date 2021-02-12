@@ -16,16 +16,18 @@
 
 package com.google.samples.propertyanimation
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
+import android.animation.*
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
 import com.google.samples.propertyanimation.databinding.ActivityMainBinding
 
 
@@ -121,6 +123,50 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun shower() {
+        // Create a star
+        val container = binding.star.parent as ViewGroup
+        val containerW = container.width
+        val containerH = container.height
+        var starW: Float = binding.star.width.toFloat()
+        var starH: Float = binding.star.height.toFloat()
+
+        val newStar = AppCompatImageView(this)
+        newStar.setImageResource(R.drawable.ic_star)
+        newStar.layoutParams = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.WRAP_CONTENT,
+            FrameLayout.LayoutParams.WRAP_CONTENT)
+        container.addView(newStar)
+
+
+        // Sizing and positioning the star
+        newStar.scaleX = Math.random().toFloat() * 1.5f + .1f
+        newStar.scaleY = newStar.scaleX
+        starW *= newStar.scaleX
+        starH *= newStar.scaleY
+
+        newStar.translationX = Math.random().toFloat() *
+                containerW - starW / 2
+
+        // Creating animators for star rotation and falling
+        val mover = ObjectAnimator.ofFloat(newStar, View.TRANSLATION_Y,
+            -starH, containerH + starH)
+        mover.interpolator = AccelerateInterpolator(1f)
+        val rotator = ObjectAnimator.ofFloat(newStar, View.ROTATION,
+            (Math.random() * 1080).toFloat())
+        rotator.interpolator = LinearInterpolator()
+
+
+        // Running the animations in parallel with AnimatorSet
+        val set = AnimatorSet()
+        set.playTogether(mover, rotator)
+        set.duration = (Math.random() * 1500 + 500).toLong()
+
+        set.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                container.removeView(newStar)
+            }
+        })
+        set.start()
     }
 
 }
