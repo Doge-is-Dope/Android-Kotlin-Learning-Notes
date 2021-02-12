@@ -43,6 +43,13 @@ class ClippedView @JvmOverloads constructor(
     private val rowFour = rowThree + rectInset + clipRectBottom
     private val textRow = rowFour + (1.5f * clipRectBottom)
 
+    private var rectF = RectF(
+        rectInset,
+        rectInset,
+        clipRectRight - rectInset,
+        clipRectBottom - rectInset
+    )
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         drawBackAndUnclippedRectangle(canvas)
@@ -151,21 +158,104 @@ class ClippedView @JvmOverloads constructor(
     }
 
     private fun drawIntersectionClippingExample(canvas: Canvas) {
+        canvas.save()
+        canvas.translate(columnTwo, rowTwo)
+        canvas.clipRect(
+            clipRectLeft, clipRectTop,
+            clipRectRight - smallRectOffset,
+            clipRectBottom - smallRectOffset
+        )
+        // The method clipRect(float, float, float, float, Region.Op
+        // .INTERSECT) was deprecated in API level 26. The recommended
+        // alternative method is clipRect(float, float, float, float), which
+        // is currently available in API level 26 and higher.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            canvas.clipRect(
+                clipRectLeft + smallRectOffset,
+                clipRectTop + smallRectOffset,
+                clipRectRight, clipRectBottom,
+                Region.Op.INTERSECT
+            )
+        } else {
+            canvas.clipRect(
+                clipRectLeft + smallRectOffset,
+                clipRectTop + smallRectOffset,
+                clipRectRight, clipRectBottom
+            )
+        }
+        drawClippedRectangle(canvas)
+        canvas.restore()
     }
 
     private fun drawCombinedClippingExample(canvas: Canvas) {
+        canvas.save()
+        canvas.translate(columnOne, rowThree)
+        path.rewind()
+        path.addCircle(
+            clipRectLeft + rectInset + circleRadius,
+            clipRectTop + circleRadius + rectInset,
+            circleRadius, Path.Direction.CCW
+        )
+        path.addRect(
+            clipRectRight / 2 - circleRadius,
+            clipRectTop + circleRadius + rectInset,
+            clipRectRight / 2 + circleRadius,
+            clipRectBottom - rectInset, Path.Direction.CCW
+        )
+        canvas.clipPath(path)
+        drawClippedRectangle(canvas)
+        canvas.restore()
     }
 
     private fun drawRoundedRectangleClippingExample(canvas: Canvas) {
+        canvas.save()
+        canvas.translate(columnTwo, rowThree)
+        path.rewind()
+        path.addRoundRect(
+            rectF, clipRectRight / 4,
+            clipRectRight / 4, Path.Direction.CCW
+        )
+        canvas.clipPath(path)
+        drawClippedRectangle(canvas)
+        canvas.restore()
     }
 
     private fun drawOutsideClippingExample(canvas: Canvas) {
+        canvas.save()
+        canvas.translate(columnOne, rowFour)
+        canvas.clipRect(
+            2 * rectInset, 2 * rectInset,
+            clipRectRight - 2 * rectInset,
+            clipRectBottom - 2 * rectInset
+        )
+        drawClippedRectangle(canvas)
+        canvas.restore()
     }
 
     private fun drawTranslatedTextExample(canvas: Canvas) {
+        canvas.save()
+        paint.color = Color.GREEN
+        // Align the RIGHT side of the text with the origin.
+        paint.textAlign = Paint.Align.LEFT
+        // Apply transformation to canvas.
+        canvas.translate(columnTwo,textRow)
+        // Draw text.
+        canvas.drawText(context.getString(R.string.translated),
+            clipRectLeft,clipRectTop,paint)
+        canvas.restore()
     }
 
     private fun drawSkewedTextExample(canvas: Canvas) {
+        canvas.save()
+        paint.color = Color.YELLOW
+        paint.textAlign = Paint.Align.RIGHT
+        // Position text.
+        canvas.translate(columnTwo, textRow)
+        // Apply skew transformation.
+        canvas.skew(0.2f, 0.3f)
+        canvas.drawText(context.getString(R.string.skewed),
+            clipRectLeft, clipRectTop, paint)
+        canvas.restore()
     }
 
     private fun drawQuickRejectExample(canvas: Canvas) {
