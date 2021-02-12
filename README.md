@@ -14,3 +14,5 @@
 10. GDGFinder: Design and styling
 11. EggTimer: Notifications, Intent, BroadcastReceiver
 12. FanController: Custom view
+13. MiniPaint: Draw on canvas
+14. ClippingExample: Clipping
