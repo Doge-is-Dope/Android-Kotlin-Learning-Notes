@@ -9,4 +9,7 @@
     <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
     <string name="dropped_pin">Dropped Pin</string>
     <string name="poi">poi</string>
+
+
+    <string name="map_id">32b8bef9b0740368</string>
 </resources>
