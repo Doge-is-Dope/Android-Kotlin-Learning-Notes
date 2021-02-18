@@ -28,13 +28,13 @@ fun errorMessage(context: Context, errorCode: Int): String {
     val resources = context.resources
     return when (errorCode) {
         GeofenceStatusCodes.GEOFENCE_NOT_AVAILABLE -> resources.getString(
-            R.string.geofence_not_available
+                R.string.geofence_not_available
         )
         GeofenceStatusCodes.GEOFENCE_TOO_MANY_GEOFENCES -> resources.getString(
-            R.string.geofence_too_many_geofences
+                R.string.geofence_too_many_geofences
         )
         GeofenceStatusCodes.GEOFENCE_TOO_MANY_PENDING_INTENTS -> resources.getString(
-            R.string.geofence_too_many_pending_intents
+                R.string.geofence_too_many_pending_intents
         )
         else -> resources.getString(R.string.unknown_geofence_error)
     }
@@ -54,29 +54,35 @@ internal object GeofencingConstants {
     val GEOFENCE_EXPIRATION_IN_MILLISECONDS: Long = TimeUnit.HOURS.toMillis(1)
 
     val LANDMARK_DATA = arrayOf(
-        LandmarkDataObject(
-            "golden_gate_bridge",
-            R.string.golden_gate_bridge_hint,
-            R.string.golden_gate_bridge_location,
-            LatLng(37.819927, -122.478256)),
+            LandmarkDataObject(
+                    "golden_gate_bridge",
+                    R.string.golden_gate_bridge_hint,
+                    R.string.golden_gate_bridge_location,
+                    LatLng(37.819927, -122.478256)),
 
-        LandmarkDataObject(
-            "ferry_building",
-            R.string.ferry_building_hint,
-            R.string.ferry_building_location,
-            LatLng(37.795490, -122.394276)),
+            LandmarkDataObject(
+                    "ferry_building",
+                    R.string.ferry_building_hint,
+                    R.string.ferry_building_location,
+                    LatLng(37.795490, -122.394276)),
 
-        LandmarkDataObject(
-            "pier_39",
-            R.string.pier_39_hint,
-            R.string.pier_39_location,
-            LatLng(37.808674, -122.409821)),
+            LandmarkDataObject(
+                    "pier_39",
+                    R.string.pier_39_hint,
+                    R.string.pier_39_location,
+                    LatLng(37.808674, -122.409821)),
 
-        LandmarkDataObject(
-           "union_square",
-            R.string.union_square_hint,
-            R.string.union_square_location,
-            LatLng(37.788151, -122.407570))
+            LandmarkDataObject(
+                    "union_square",
+                    R.string.union_square_hint,
+                    R.string.union_square_location,
+                    LatLng(37.788151, -122.407570)),
+
+            LandmarkDataObject(
+                    "Lombard street",
+                    R.string.lombard_street_hint,
+                    R.string.lombard_street_location,
+                    LatLng(37.801205, -122.426752))
     )
 
     val NUM_LANDMARKS = LANDMARK_DATA.size
