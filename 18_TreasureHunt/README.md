@@ -22,10 +22,11 @@ Pre-requisites
 - A minimum of SDK API 29 on your device or emulator. (This should still work on lower API levels but may look differenti.)
 
 
-Getting Started
----------------
-1. Download and run the app.
-2. If you are running API 29 or higher, grant the "Always allow" permission; otherwisa, grant "Allow" for location permissions.
 
-Note: If you are running this app on an emulator, you will need to use another app to pull location data from.
-This is because geofencing relies on device sensors to detect the location of the device, which the emulator cannot access.
+Project structure
+---------------
+`HuntMainActivity.kt` is the main class you will be working in. This class contains skeleton code for functions that handle permissions, adding geofences and removing geofences.
+`GeofenceViewModel.kt` is the ViewModel associated with HuntMainActivity.kt. This class handles the LiveData and determines which hint should be shown on screen.
+`NotificationUtils.kt`: When you enter a geofence, a notification pops up! This class creates and styles that notification.
+`activity_main.xml`: This currently displays an image of an Android but you will implement it to display a hint.
+`GeofenceBroadcastReceiver.kt`: This contains skeleton code for the onReceive() method of the BroadcastReceiver where you will handle
