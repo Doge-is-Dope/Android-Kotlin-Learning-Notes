@@ -25,8 +25,8 @@ Pre-requisites
 
 Project structure
 ---------------
-`HuntMainActivity.kt` is the main class you will be working in. This class contains skeleton code for functions that handle permissions, adding geofences and removing geofences.
-`GeofenceViewModel.kt` is the ViewModel associated with HuntMainActivity.kt. This class handles the LiveData and determines which hint should be shown on screen.
-`NotificationUtils.kt`: When you enter a geofence, a notification pops up! This class creates and styles that notification.
-`activity_main.xml`: This currently displays an image of an Android but you will implement it to display a hint.
-`GeofenceBroadcastReceiver.kt`: This contains skeleton code for the onReceive() method of the BroadcastReceiver where you will handle
+- `HuntMainActivity.kt` is the main class you will be working in. This class contains skeleton code for functions that handle permissions, adding geofences and removing geofences.
+- `GeofenceViewModel.kt` is the ViewModel associated with HuntMainActivity.kt. This class handles the LiveData and determines which hint should be shown on screen.
+- `NotificationUtils.kt`: When you enter a geofence, a notification pops up! This class creates and styles that notification.
+- `activity_main.xml`: This currently displays an image of an Android but you will implement it to display a hint.
+- `GeofenceBroadcastReceiver.kt`: This contains skeleton code for the onReceive() method of the BroadcastReceiver where you will handle
