@@ -19,8 +19,8 @@ class StatisticsUtilsTest {
         val result = getActiveAndCompletedStats(tasks)
 
         // Check the result
-        assertEquals(result.completedTasksPercent, 0f)
-        assertEquals(result.activeTasksPercent, 100f)
+        assertEquals(0f, result.completedTasksPercent)
+        assertEquals(100f, result.activeTasksPercent)
     }
 
     // If there are 2 completed tests and 3 active test
@@ -40,8 +40,34 @@ class StatisticsUtilsTest {
         val result = getActiveAndCompletedStats(tasks)
 
         // Check the result
-        assertEquals(result.completedTasksPercent, 40f)
-        assertEquals(result.activeTasksPercent, 60f)
+        assertEquals(40f, result.completedTasksPercent)
+        assertEquals(60f, result.activeTasksPercent)
+    }
+
+    @Test
+    fun getActiveAndCompletedStats_empty_returnsZero() {
+
+        // Create an active tasks (the false makes this active)
+        val tasks = emptyList<Task>()
+        // Call our function
+        val result = getActiveAndCompletedStats(tasks)
+
+        // Check the result
+        assertEquals(0f, result.completedTasksPercent)
+        assertEquals(0f, result.activeTasksPercent)
+    }
+
+    @Test
+    fun getActiveAndCompletedStats_error_returnsZero() {
+
+        // Create an active tasks (the false makes this active)
+        val tasks = null
+        // Call our function
+        val result = getActiveAndCompletedStats(tasks)
+
+        // Check the result
+        assertEquals(0f, result.completedTasksPercent)
+        assertEquals(0f, result.activeTasksPercent)
     }
 }
 
