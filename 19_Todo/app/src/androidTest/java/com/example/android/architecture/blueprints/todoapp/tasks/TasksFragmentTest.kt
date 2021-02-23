@@ -1,11 +1,13 @@
 package com.example.android.architecture.blueprints.todoapp.tasks
 
 import FakeAndroidTestRepository
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -66,6 +68,29 @@ class TasksFragmentTest {
         // THEN - Verify that we navigate to the first detail screen
         verify(navController).navigate(
                 TasksFragmentDirections.actionTasksFragmentToTaskDetailFragment("id1")
+        )
+    }
+
+
+    @Test
+    fun clickAddTaskButton_navigateToAddEditFragment() = runBlockingTest {
+        // GIVEN - On the home screen
+        val scenario = launchFragmentInContainer<TasksFragment>(Bundle(), R.style.AppTheme)
+
+        val navController = mock(NavController::class.java)
+        scenario.onFragment {
+            Navigation.setViewNavController(it.view!!, navController)
+        }
+
+        // WHEN - Click on the fab
+        onView(withId(R.id.add_task_fab)).perform(click())
+
+        // THEN - Verify that we navigate to the AddEditTaskFragment
+        verify(navController).navigate(
+                TasksFragmentDirections.actionTasksFragmentToAddEditTaskFragment(
+                        null,
+                        getApplicationContext<Context>().getString(R.string.add_task)
+                )
         )
     }
 
