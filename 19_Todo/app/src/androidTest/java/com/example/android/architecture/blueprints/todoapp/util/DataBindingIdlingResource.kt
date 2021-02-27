@@ -14,9 +14,11 @@ import java.util.*
 class DataBindingIdlingResource : IdlingResource {
     // List of registered callbacks
     private val idlingCallbacks = mutableListOf<IdlingResource.ResourceCallback>()
+
     // Give it a unique id to work around an Espresso bug where you cannot register/unregister
     // an idling resource with the same name.
     private val id = UUID.randomUUID().toString()
+
     // Holds whether isIdle was called and the result was false. We track this to avoid calling
     // onTransitionToIdle callbacks if Espresso never thought we were idle in the first place.
     private var wasNotIdle = false
@@ -84,7 +86,5 @@ fun DataBindingIdlingResource.monitorActivity(
  * Sets the fragment from a [FragmentScenario] to be used from [DataBindingIdlingResource].
  */
 fun DataBindingIdlingResource.monitorFragment(fragmentScenario: FragmentScenario<out Fragment>) {
-    fragmentScenario.onFragment {
-        this.activity = it.requireActivity()
-    }
+
 }
