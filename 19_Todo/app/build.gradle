@@ -39,6 +39,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    testOptions.unitTests {
+        includeAndroidResources = true
+        returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -76,6 +80,7 @@ dependencies {
 
     debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
     implementation "androidx.test:core:$androidXTestCoreVersion"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junitVersion"
