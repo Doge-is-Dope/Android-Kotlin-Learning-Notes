@@ -20,3 +20,5 @@
 16. MotionLayout: MotionLayout
 17. Wander: Google Maps API
 18. TreasureHunt: Geofencing API
+19. Todo: Testing
+20. LoginSample: Firebase Authentication
