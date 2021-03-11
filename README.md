@@ -22,3 +22,6 @@
 18. TreasureHunt: Geofencing API
 19. Todo: Testing
 20. LoginSample: Firebase Authentication
+21. PagingSample: Paging [](https://developer.android.com/codelabs/android-paging?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
+22. DataStoreSample: Proto DataStore (https://developer.android.com/codelabs/android-proto-datastore?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
+23. DiSample: Hilt (https://developer.android.com/codelabs/android-hilt?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
