@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FlowTimer</string>
+    <string name="greeting">Hello World</string>
+</resources>
