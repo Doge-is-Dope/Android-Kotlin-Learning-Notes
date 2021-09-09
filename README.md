@@ -27,4 +27,5 @@
 23. RoomSample: Room, Kotlin Flow, Android Architecture
 24. HiltSample: Hilt (WIP)
 25. DeepLinkNavigation: Navigation (WIP) 
-26. DataStoreSample: Proto DataStore (https://developer.android.com/codelabs/android-proto-datastore?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
+26. PagingSample: Pagination
+27. DataStoreSample: Proto DataStore (https://developer.android.com/codelabs/android-proto-datastore?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
