@@ -7,17 +7,16 @@ import com.chunchiehliang.koinsample.adapter.UserAdapter
 import com.chunchiehliang.koinsample.databinding.ActivityMainBinding
 import com.chunchiehliang.koinsample.repository.UserRepository
 import com.chunchiehliang.koinsample.viewmodel.MainViewModel
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
     private val adapter by lazy { UserAdapter() }
-    private val mainViewModel: MainViewModel by viewModels {
-        MainViewModel.Factory(
-            UserRepository(),
-        )
-    }
+
+    private val mainViewModel : MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
