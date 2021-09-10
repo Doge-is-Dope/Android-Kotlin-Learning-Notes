@@ -1,4 +1,4 @@
-package com.chunchiehliang.koinsample
+package com.chunchiehliang.koinsample.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
