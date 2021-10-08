@@ -2,22 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/musicFragment"
-        android:title="@string/music"
-        android:icon="@drawable/ic_music_note"/>
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
 
     <item
-        android:id="@+id/movieFragment"
-        android:title="@string/movie"
-        android:icon="@drawable/ic_movie"/>
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search" />
 
     <item
-        android:id="@+id/bookFragment"
-        android:title="@string/book"
-        android:icon="@drawable/ic_book"/>
+        android:id="@+id/add"
+        android:icon="@drawable/ic_add"
+        android:title="@string/add" />
 
     <item
-        android:id="@+id/settingsFragment"
-        android:title="@string/settings"
-        android:icon="@drawable/ic_settings"/>
+        android:id="@+id/appleFragment"
+        android:icon="@drawable/ic_apple"
+        android:title="@string/apple" />
+
+    <item
+        android:id="@+id/nav_graph_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings" />
 </menu>

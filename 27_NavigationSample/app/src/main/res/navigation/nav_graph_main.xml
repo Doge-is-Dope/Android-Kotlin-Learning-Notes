@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/musicFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/musicFragment"
-        android:name="com.chunchiehliang.navigationsample.music.MusicFragment"
-        android:label="fragment_music"
-        tools:layout="@layout/fragment_music" />
+        android:id="@+id/homeFragment"
+        android:name="com.chunchiehliang.navigationsample.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/movieFragment"
-        android:name="com.chunchiehliang.navigationsample.movie.MovieFragment"
-        android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" />
+        android:id="@+id/appleFragment"
+        android:name="com.chunchiehliang.navigationsample.apple.AppleFragment"
+        tools:layout="@layout/fragment_apple" />
     <fragment
-        android:id="@+id/bookFragment"
-        android:name="com.chunchiehliang.navigationsample.book.BookFragment"
-        android:label="fragment_book"
-        tools:layout="@layout/fragment_book" />
+        android:id="@+id/searchFragment"
+        android:name="com.chunchiehliang.navigationsample.search.SearchFragment"
+        tools:layout="@layout/fragment_search" />
+
+    <include app:graph="@navigation/nav_graph_settings" />
+
 </navigation>
