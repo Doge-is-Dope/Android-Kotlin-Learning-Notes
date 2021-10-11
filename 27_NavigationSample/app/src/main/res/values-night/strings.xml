@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_details">To Settings Details</string>
+    <string name="btn_settings_details">To Settings Details</string>
 </resources>

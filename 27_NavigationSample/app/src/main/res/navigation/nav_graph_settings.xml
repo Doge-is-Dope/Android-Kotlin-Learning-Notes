@@ -9,5 +9,14 @@
         android:id="@+id/settingsFragment"
         android:name="com.chunchiehliang.navigationsample.settings.SettingsFragment"
         android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsDetailsFragment"
+            app:destination="@id/settingsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsDetailsFragment"
+        android:name="com.chunchiehliang.navigationsample.settings.SettingsDetailsFragment"
+        android:label="SettingsDetailsFragment"
+        tools:layout="@layout/fragment_settings_details"/>
 </navigation>

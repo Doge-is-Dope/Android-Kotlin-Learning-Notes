@@ -1,6 +1,7 @@
 package com.chunchiehliang.navigationsample
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -20,8 +21,23 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-//        NavigationUI.setupWithNavController(binding.bottomNav, navController)
 
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.searchFragment,
+                R.id.shoppingFragment,
+                R.id.settingsFragment
+            ),
+        )
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.homeFragment) {
+                binding.toolbar.visibility = View.GONE
+            } else {
+                binding.toolbar.visibility = View.VISIBLE
+            }
+        }
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.bottomNav.setupWithNavController(navController)
     }
 }
