@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
-        binding.bottomNav.setupWithNavController(navController)
+        binding.bottomNav?.setupWithNavController(navController)
+        binding.navigationRail?.setupWithNavController(navController)
     }
 }

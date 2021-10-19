@@ -21,7 +21,7 @@ object apiClient {
                 val builder = chain.request().newBuilder()
                 builder.addHeader("Accept", "application/json")
                 builder.addHeader("Accept-Version", "v1")
-                builder.addHeader("Authorization", "Client-ID ${BuildConfig.UNSPLASH_ACCESS_KEY}")
+//                builder.addHeader("Authorization", "Client-ID ${BuildConfig.UNSPLASH_ACCESS_KEY}")
                 return@Interceptor chain.proceed(builder.build())
             })
         .build()
