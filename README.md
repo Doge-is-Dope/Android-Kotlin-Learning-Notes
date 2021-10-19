@@ -28,4 +28,9 @@
 24. KoinSample: Koin
 25. HiltSample: Hilt (WIP)
 26. ComposeSample: Android Compose
-27. DataStoreSample: Proto DataStore (https://developer.android.com/codelabs/android-proto-datastore?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
+27. NavigationSample: Navigation component
+28. MotionSample: Material motion
+
+
+
+Proto DataStore (https://developer.android.com/codelabs/android-proto-datastore?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
