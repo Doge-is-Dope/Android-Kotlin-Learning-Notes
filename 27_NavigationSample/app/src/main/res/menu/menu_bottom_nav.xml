@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_graph_home"
         android:icon="@drawable/ic_home"
         android:title="@string/home" />
 
@@ -17,12 +17,12 @@
         android:title="@string/add" />
 
     <item
-        android:id="@+id/shoppingFragment"
+        android:id="@+id/nav_graph_shopping"
         android:icon="@drawable/ic_shopping"
         android:title="@string/shopping" />
 
     <item
-        android:id="@+id/nav_graph_settings"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/settings" />
+        android:id="@+id/nav_graph_user"
+        android:icon="@drawable/ic_apple"
+        android:title="@string/user" />
 </menu>

@@ -3,6 +3,7 @@ package com.chunchiehliang.navigationsample
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -27,15 +28,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment,
                 R.id.searchFragment,
                 R.id.shoppingFragment,
-                R.id.settingsFragment
+                R.id.userFragment
             ),
         )
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.homeFragment) {
-                binding.toolbar.visibility = View.GONE
-            } else {
-                binding.toolbar.visibility = View.VISIBLE
-            }
+            binding.toolbar.isVisible = destination.id != R.id.homeFragment
         }
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.bottomNav?.setupWithNavController(navController)
