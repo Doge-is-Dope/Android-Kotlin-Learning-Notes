@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.searchFragment,
-                R.id.shoppingFragment,
+                R.id.shopFragment,
                 R.id.userFragment
             ),
         )

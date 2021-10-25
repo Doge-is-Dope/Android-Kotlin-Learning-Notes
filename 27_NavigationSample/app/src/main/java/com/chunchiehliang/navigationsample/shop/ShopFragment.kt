@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.chunchiehliang.navigationsample.databinding.FragmentShoppingBinding
+import com.chunchiehliang.navigationsample.databinding.FragmentShopBinding
 
 class ShopFragment : Fragment() {
 
-    private var _binding: FragmentShoppingBinding? = null
+    private var _binding: FragmentShopBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentShoppingBinding.inflate(inflater, container, false)
+        _binding = FragmentShopBinding.inflate(inflater, container, false)
         return binding.root
     }
 

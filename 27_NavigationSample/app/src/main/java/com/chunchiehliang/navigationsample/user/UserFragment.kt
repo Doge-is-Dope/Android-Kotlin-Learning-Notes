@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.chunchiehliang.navigationsample.databinding.FragmentUserBinding
+import com.chunchiehliang.navigationsample.utils.navigate
 
 class UserFragment : Fragment() {
 
@@ -30,10 +31,12 @@ class UserFragment : Fragment() {
 
 
         binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = userViewModel
 
-        }
-        binding.btnToDetails.setOnClickListener {
-            findNavController().navigate(UserFragmentDirections.actionToUserDetails())
+            btnToDetails.setOnClickListener {
+                navigate(UserFragmentDirections.actionToUserDetails())
+            }
         }
     }
 

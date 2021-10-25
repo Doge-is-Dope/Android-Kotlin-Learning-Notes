@@ -9,5 +9,22 @@
         android:id="@+id/homeFragment"
         android:name="com.chunchiehliang.navigationsample.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_to_product"
+            app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_to_user"
+            app:destination="@id/nav_graph_user" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.chunchiehliang.navigationsample.product.ProductFragment"
+        android:label="Product in Home"
+        tools:layout="@layout/fragment_product">
+        <action
+            android:id="@+id/action_to_user"
+            app:destination="@id/nav_graph_user" />
+    </fragment>
+    <include app:graph="@navigation/nav_graph_user" />
 </navigation>
