@@ -1,39 +1,30 @@
-package com.chunchiehliang.navigationsample.user
+package com.chunchiehliang.navigationsample.shop
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.chunchiehliang.navigationsample.databinding.FragmentUserBinding
+import com.chunchiehliang.navigationsample.databinding.FragmentShoppingBinding
 
-class UserFragment : Fragment() {
+class ShopFragment : Fragment() {
 
-    private var _binding: FragmentUserBinding? = null
+    private var _binding: FragmentShoppingBinding? = null
     private val binding get() = _binding!!
-
-
-    private val userViewModel by viewModels<UserViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentUserBinding.inflate(inflater, container, false)
+        _binding = FragmentShoppingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        binding.apply {
-
-        }
         binding.btnToDetails.setOnClickListener {
-            findNavController().navigate(UserFragmentDirections.actionToUserDetails())
+            findNavController().navigate(ShopFragmentDirections.actionToUserDetailsFragment())
         }
     }
 
@@ -41,4 +32,5 @@ class UserFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

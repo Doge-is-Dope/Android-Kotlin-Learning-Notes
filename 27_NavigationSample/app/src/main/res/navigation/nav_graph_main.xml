@@ -13,6 +13,6 @@
 
     <include app:graph="@navigation/nav_graph_user" />
     <include app:graph="@navigation/nav_graph_home" />
-    <include app:graph="@navigation/nav_graph_shopping" />
+    <include app:graph="@navigation/nav_graph_shop" />
 
 </navigation>

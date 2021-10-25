@@ -33,8 +33,4 @@ object apiClient {
             .client(okHttpClient)
             .build()
     }
-
-    val unsplashService: UnsplashService by lazy {
-        retrofit().create(UnsplashService::class.java)
-    }
 }

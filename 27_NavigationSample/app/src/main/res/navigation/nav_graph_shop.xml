@@ -2,24 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_user"
-    app:startDestination="@id/userFragment">
+    android:id="@+id/nav_graph_shop"
+    app:startDestination="@id/shoppingFragment">
 
     <fragment
-        android:id="@+id/userFragment"
-        android:name="com.chunchiehliang.navigationsample.user.UserFragment"
-        android:label="User"
-        tools:layout="@layout/fragment_user">
+        android:id="@+id/shoppingFragment"
+        android:name="com.chunchiehliang.navigationsample.shop.ShopFragment"
+        android:label="Shopping"
+        tools:layout="@layout/fragment_shopping">
         <action
-            android:id="@+id/action_to_userDetails"
+            android:id="@+id/action_to_userDetailsFragment"
             app:destination="@id/userDetailsFragment" />
     </fragment>
-
-
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.chunchiehliang.navigationsample.user.UserDetailsFragment"
-        android:label="User details in user"
-        tools:layout="@layout/fragment_user_details" />
+        android:label="User details in shopping" />
+
 
 </navigation>

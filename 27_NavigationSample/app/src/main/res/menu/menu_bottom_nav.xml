@@ -17,9 +17,9 @@
         android:title="@string/add" />
 
     <item
-        android:id="@+id/nav_graph_shopping"
-        android:icon="@drawable/ic_shopping"
-        android:title="@string/shopping" />
+        android:id="@+id/nav_graph_shop"
+        android:icon="@drawable/ic_shop"
+        android:title="@string/shop" />
 
     <item
         android:id="@+id/nav_graph_user"
