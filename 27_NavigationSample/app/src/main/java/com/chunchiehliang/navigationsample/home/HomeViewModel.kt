@@ -3,8 +3,6 @@ package com.chunchiehliang.navigationsample.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.chunchiehliang.navigationsample.modal.User
-import com.chunchiehliang.navigationsample.repository.UnsplashRepository
 
 class HomeViewModel() : ViewModel() {
     private val _navigateToProduct = MutableLiveData<Long?>()

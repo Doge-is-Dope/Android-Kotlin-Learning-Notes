@@ -5,14 +5,7 @@
     android:id="@+id/nav_graph_main"
     app:startDestination="@+id/nav_graph_home">
 
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.chunchiehliang.navigationsample.search.SearchFragment"
-        android:label="@string/search"
-        tools:layout="@layout/fragment_search" />
-
     <include app:graph="@navigation/nav_graph_user" />
     <include app:graph="@navigation/nav_graph_home" />
-    <include app:graph="@navigation/nav_graph_shop" />
 
 </navigation>

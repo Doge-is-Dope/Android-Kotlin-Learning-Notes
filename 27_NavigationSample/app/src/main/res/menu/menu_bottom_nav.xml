@@ -7,22 +7,12 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_search"
-        android:title="@string/search" />
-
-    <item
         android:id="@+id/add"
         android:icon="@drawable/ic_add"
         android:title="@string/add" />
 
     <item
-        android:id="@+id/nav_graph_shop"
-        android:icon="@drawable/ic_shop"
-        android:title="@string/shop" />
-
-    <item
         android:id="@+id/nav_graph_user"
-        android:icon="@drawable/ic_apple"
+        android:icon="@drawable/ic_account"
         android:title="@string/user" />
 </menu>

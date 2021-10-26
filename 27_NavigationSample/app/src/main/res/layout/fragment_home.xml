@@ -5,37 +5,16 @@
 
     <data>
 
-        <variable
-            name="viewModel"
-            type="com.chunchiehliang.navigationsample.home.HomeViewModel" />
-
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="@string/home" />
-
-        <Button
-            android:id="@+id/btn_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/material_margin"
-            android:layout_marginTop="@dimen/material_margin"
-            android:onClick="@{() -> viewModel.onProductClick(321L)}"
-            android:text="@string/product" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/material_margin"
-            android:layout_marginTop="@dimen/material_margin"
-            android:onClick="@{() -> viewModel.onUserClick(123L)}"
-            android:text="@string/user" />
-    </LinearLayout>
+            app:title="@string/home"/>
+    </FrameLayout>
 </layout>
