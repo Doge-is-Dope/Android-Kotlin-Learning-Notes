@@ -7,7 +7,7 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/add"
+        android:id="@+id/addActivity"
         android:icon="@drawable/ic_add"
         android:title="@string/add" />
 

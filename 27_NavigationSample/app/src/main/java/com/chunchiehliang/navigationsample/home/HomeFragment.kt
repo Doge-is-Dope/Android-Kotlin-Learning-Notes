@@ -47,6 +47,11 @@ class HomeFragment : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = homeViewModel
+
+            btnToProduct.setOnClickListener {
+                val deeplink = InternalDeepLink.getProductDeepLink(productNo = 111L)
+                findNavController().navigate(deeplink.toUri())
+            }
         }
     }
 }

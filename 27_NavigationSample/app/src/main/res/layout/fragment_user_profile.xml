@@ -8,7 +8,6 @@
         <variable
             name="viewModel"
             type="com.chunchiehliang.navigationsample.user.UserViewModel" />
-
     </data>
 
     <LinearLayout
@@ -25,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text="" />
 
         <Button
             android:id="@+id/btn_to_product"

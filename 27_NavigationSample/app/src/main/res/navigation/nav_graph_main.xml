@@ -5,7 +5,11 @@
     android:id="@+id/nav_graph_main"
     app:startDestination="@+id/nav_graph_home">
 
-
+    <activity
+        android:id="@+id/addActivity"
+        android:name="com.chunchiehliang.navigationsample.add.AddActivity"
+        android:label="@string/add"
+        tools:layout="@layout/activity_add" />
 
     <fragment
         android:id="@+id/myProfileFragment"
@@ -16,4 +20,5 @@
     <include app:graph="@navigation/nav_graph_product" />
     <include app:graph="@navigation/nav_graph_user" />
     <include app:graph="@navigation/nav_graph_home" />
+
 </navigation>
