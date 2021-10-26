@@ -12,15 +12,12 @@ import kotlinx.coroutines.withContext
 
 class ProductViewModel : ViewModel() {
 
-    private val _navigateToUser = MutableLiveData<Long?>()
-    val navigateToUser: LiveData<Long?> get() = _navigateToUser
+    private val _productNo = MutableLiveData<Long?>()
+    val productNo: LiveData<Long?> get() = _productNo
 
-    fun onUserClick(userId: Long) {
-        _navigateToUser.value = userId
-    }
 
-    fun onNavigateToUserComplete() {
-        _navigateToUser.value = null
+    fun setProductNo(no: Long) {
+        _productNo.value = no
     }
 
 }

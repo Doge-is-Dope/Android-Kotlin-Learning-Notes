@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.navigationsample.databinding.FragmentUserProfileBinding
+import com.chunchiehliang.navigationsample.utils.InternalDeepLink
+import com.chunchiehliang.navigationsample.utils.RandomNames
 import timber.log.Timber
 
 class UserProfileFragment : Fragment() {
@@ -41,6 +44,20 @@ class UserProfileFragment : Fragment() {
                 toolbar.setupWithNavController(it)
             }
 
+            btnToProduct.setOnClickListener {
+                val deeplink = InternalDeepLink.getProductDeepLink(productNo = 111L)
+                findNavController().navigate(deeplink.toUri())
+            }
+
+            btnToMy.setOnClickListener {
+                val deeplink = InternalDeepLink.getUserDeepLink(username = "wei")
+                findNavController().navigate(deeplink.toUri())
+            }
+
+            btnToUser.setOnClickListener {
+                val deeplink = InternalDeepLink.getUserDeepLink(username = RandomNames.getName())
+                findNavController().navigate(deeplink.toUri())
+            }
         }
     }
 

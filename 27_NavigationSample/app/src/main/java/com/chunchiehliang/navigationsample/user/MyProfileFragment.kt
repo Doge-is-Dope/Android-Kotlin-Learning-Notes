@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.navigationsample.R
 import com.chunchiehliang.navigationsample.databinding.FragmentUserMyProfileBinding
 import com.chunchiehliang.navigationsample.utils.InternalDeepLink
+import com.chunchiehliang.navigationsample.utils.RandomNames
 import timber.log.Timber
 
 class MyProfileFragment : Fragment() {
@@ -46,7 +47,7 @@ class MyProfileFragment : Fragment() {
             }
 
             btnToUser.setOnClickListener {
-                val deeplink = InternalDeepLink.getUserDeepLink(username = "andrew")
+                val deeplink = InternalDeepLink.getUserDeepLink(username = RandomNames.getName())
                 findNavController().navigate(deeplink.toUri())
             }
         }

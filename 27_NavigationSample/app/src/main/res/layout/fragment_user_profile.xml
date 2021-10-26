@@ -11,13 +11,44 @@
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </FrameLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
+        <Button
+            android:id="@+id/btn_to_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/material_margin"
+            android:layout_marginTop="@dimen/material_margin"
+            android:text="@string/product" />
+
+        <Button
+            android:id="@+id/btn_to_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/material_margin"
+            android:layout_marginTop="@dimen/material_margin"
+            android:text="@string/user" />
+
+        <Button
+            android:id="@+id/btn_to_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/material_margin"
+            android:layout_marginTop="@dimen/material_margin"
+            android:text="@string/my" />
+    </LinearLayout>
 </layout>

@@ -12,15 +12,10 @@ import kotlinx.coroutines.withContext
 
 class UserViewModel : ViewModel() {
 
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> get() = _user
+    private val _userId = MutableLiveData<Int>()
+    val userId: LiveData<Int> get() = _userId
 
-    init {
-        viewModelScope.launch {
-            delay(2000L)
-            withContext(Dispatchers.Default) {
-                _user.postValue(User(1, "mike_test", "Mike", "https://source.unsplash.com/random"))
-            }
-        }
+    fun setUserId(userId: Int) {
+        _userId.value = userId
     }
 }

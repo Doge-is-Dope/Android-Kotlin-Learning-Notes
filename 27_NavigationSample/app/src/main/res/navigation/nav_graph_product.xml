@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_product"
+    app:startDestination="@id/productFragment">
+
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.chunchiehliang.navigationsample.product.ProductFragment"
+        android:label="Product"
+        tools:layout="@layout/fragment_product">
+
+        <deepLink app:uri="popchill://product/{productNo}" />
+        <argument
+            android:name="productNo"
+            app:argType="long" />
+    </fragment>
+</navigation>
