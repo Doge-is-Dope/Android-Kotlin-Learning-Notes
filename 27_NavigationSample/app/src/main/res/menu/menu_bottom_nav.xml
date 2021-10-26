@@ -12,7 +12,7 @@
         android:title="@string/add" />
 
     <item
-        android:id="@+id/nav_graph_user"
+        android:id="@+id/myProfileFragment"
         android:icon="@drawable/ic_account"
-        android:title="@string/user" />
+        android:title="@string/my" />
 </menu>

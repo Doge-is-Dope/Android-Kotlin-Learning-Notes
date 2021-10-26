@@ -2,11 +2,11 @@ package com.chunchiehliang.navigationsample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.navigationsample.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,14 +23,13 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
-                R.id.userFragment
+                R.id.myProfileFragment
             ),
         )
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.toolbar.isVisible = destination.id != R.id.homeFragment
+
         }
         binding.apply {
-            toolbar.setupWithNavController(navController, appBarConfiguration)
             bottomNav.setupWithNavController(navController)
         }
     }

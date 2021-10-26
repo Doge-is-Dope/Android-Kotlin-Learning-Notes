@@ -2,11 +2,8 @@
     <string name="app_name">NavigationSample</string>
 
     <string name="add">Add</string>
-    <string name="apple">Apple</string>
     <string name="home">Home</string>
-    <string name="search">Search</string>
-    <string name="shop">Shop</string>
     <string name="user">User</string>
     <string name="product">Product</string>
-    <string name="user_details">User details</string>
+    <string name="my">My</string>
 </resources>

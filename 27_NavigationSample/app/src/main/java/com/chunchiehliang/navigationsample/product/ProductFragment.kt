@@ -27,14 +27,14 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productViewModel.apply {
-            navigateToUser.observe(viewLifecycleOwner, {
-                it?.let {
-                    navigate(ProductFragmentDirections.actionToUser())
-                    onNavigateToUserComplete()
-                }
-            })
-        }
+//        productViewModel.apply {
+//            navigateToUser.observe(viewLifecycleOwner, {
+//                it?.let {
+//                    navigate(ProductFragmentDirections.actionToUser())
+//                    onNavigateToUserComplete()
+//                }
+//            })
+//        }
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner

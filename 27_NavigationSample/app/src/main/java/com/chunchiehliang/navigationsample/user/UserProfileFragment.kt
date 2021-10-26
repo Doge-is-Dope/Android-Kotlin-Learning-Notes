@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.chunchiehliang.navigationsample.databinding.FragmentUserBinding
-import com.chunchiehliang.navigationsample.utils.navigate
+import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
+import com.chunchiehliang.navigationsample.databinding.FragmentUserProfileBinding
+import timber.log.Timber
 
-class UserFragment : Fragment() {
+class UserProfileFragment : Fragment() {
 
-    private var _binding: FragmentUserBinding? = null
+    private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
 
+    private val args by navArgs<UserProfileFragmentArgs>()
 
     private val userViewModel by viewModels<UserViewModel>()
 
@@ -22,21 +25,22 @@ class UserFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentUserBinding.inflate(inflater, container, false)
+        _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Timber.d("User profile")
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = userViewModel
-
-            btnToDetails.setOnClickListener {
-                navigate(UserFragmentDirections.actionToUserDetails())
+            findNavController().let {
+                toolbar.setupWithNavController(it)
             }
+
         }
     }
 
