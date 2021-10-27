@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.chunchiehliang.navigationsample.R
 import com.chunchiehliang.navigationsample.databinding.ActivityAddBinding
 
 class AddActivity : AppCompatActivity() {
@@ -17,24 +21,12 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.apply {
-            setSupportActionBar(binding.toolbar)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.setDisplayShowHomeEnabled(true)
-        }
-
-        binding.btnToUser.setOnClickListener {
-            Toast.makeText(
-                this,
-                "An Activity cannot navigate to a Fragment if it does not have NavHostFragment/NavController",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+//
+//        val navHostFragment =
+//            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//        val navController = navHostFragment.navController
+//
+//        val abc = AppBarConfiguration.Builder().build().setFallbackOnNavigateUpListener(listener).build()
+//        NavigationUI.setupActionBarWithNavController(this, navController, abc)
     }
 }
