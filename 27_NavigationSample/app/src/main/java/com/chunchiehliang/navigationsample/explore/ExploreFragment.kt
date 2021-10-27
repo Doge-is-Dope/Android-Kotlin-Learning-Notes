@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.chunchiehliang.navigationsample.R
 import com.chunchiehliang.navigationsample.databinding.FragmentExploreBinding
 
 class ExploreFragment : Fragment() {
@@ -30,7 +32,10 @@ class ExploreFragment : Fragment() {
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            toolbar.setupWithNavController(findNavController())
+            val appBarConfiguration = AppBarConfiguration(
+                setOf(R.id.exploreFragment)
+            )
+            toolbar.setupWithNavController(findNavController(), appBarConfiguration)
         }
     }
 
