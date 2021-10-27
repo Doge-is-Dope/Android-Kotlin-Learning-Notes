@@ -20,5 +20,6 @@
     <include app:graph="@navigation/nav_graph_product" />
     <include app:graph="@navigation/nav_graph_user" />
     <include app:graph="@navigation/nav_graph_home" />
+    <include app:graph="@navigation/nav_graph_explore" />
 
 </navigation>

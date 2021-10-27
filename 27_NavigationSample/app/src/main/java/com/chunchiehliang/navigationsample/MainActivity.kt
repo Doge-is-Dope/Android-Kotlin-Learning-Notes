@@ -35,8 +35,4 @@ class MainActivity : AppCompatActivity() {
             bottomNav.setupWithNavController(navController)
         }
     }
-//
-//    override fun onBackPressed() {
-//        navController.navigateUp()
-//    }
 }
