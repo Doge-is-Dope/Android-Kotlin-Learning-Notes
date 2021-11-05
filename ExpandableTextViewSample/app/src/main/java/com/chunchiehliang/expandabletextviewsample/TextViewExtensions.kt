@@ -458,3 +458,22 @@ private fun TextView.binarySearch(
     log("failed, verifyCount = $verifyCount")
     return -1
 }
+
+fun TextView.makeExpandableText(suffixString: String?, colorResId: Int): TextViewSuffixWrapper {
+    return TextViewSuffixWrapper(this).apply {
+        suffix = suffixString
+        suffix?.apply {
+            suffixColor(
+                "...".length,
+                length,
+                colorResId,
+                listener = { if (isCollapsed) expand() })
+        }
+        this.transition?.duration = 150
+        sceneRoot = this.textView.parent.parent.parent as ViewGroup
+        collapse(false)
+        this.textView.setOnClickListener {
+            Log.d("TextView", "clicked")
+        }
+    }
+}
