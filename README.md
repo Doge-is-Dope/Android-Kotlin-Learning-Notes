@@ -32,6 +32,11 @@
 28. MotionSample: Material motion
 29. MaterialDesignSample: Material Desgin 3 (Android 12)
 
+---
+
+ExpandableTextView
+
+
 
 
 Proto DataStore (https://developer.android.com/codelabs/android-proto-datastore?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F%3Fcat%3Dandroid#0)
