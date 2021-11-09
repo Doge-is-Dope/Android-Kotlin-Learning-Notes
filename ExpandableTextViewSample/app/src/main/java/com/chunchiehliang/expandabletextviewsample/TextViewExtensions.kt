@@ -21,10 +21,9 @@ import androidx.transition.TransitionManager
 private const val logTag = "TextViewLayout"
 
 
-
 private fun log(any: Any?) {
 
-        Log.d(logTag, any.toString())
+    Log.d(logTag, any.toString())
 }
 
 /**
@@ -32,7 +31,12 @@ private fun log(any: Any?) {
  * ellipsize textView with custom suffix.
  */
 class TextViewSuffixWrapper(val textView: TextView) {
-    private data class SuffixColor(val fromIndex: Int, val toIndex: Int, val color: Int?, val listener: View.OnClickListener? = null)
+    private data class SuffixColor(
+        val fromIndex: Int,
+        val toIndex: Int,
+        val color: Int?,
+        val listener: View.OnClickListener? = null
+    )
 
     var mainContent: CharSequence = textView.text
         set(value) {
@@ -73,7 +77,12 @@ class TextViewSuffixWrapper(val textView: TextView) {
                         textView.movementMethod = LinkMovementMethod.getInstance()
                     }
                     it.color?.also { color ->
-                        setSpan(ForegroundColorSpan(color), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        setSpan(
+                            ForegroundColorSpan(color),
+                            start,
+                            end,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
                     }
                 }
             }
@@ -98,7 +107,12 @@ class TextViewSuffixWrapper(val textView: TextView) {
         suffixColorList.add(SuffixColor(fromIndex, toIndex, null, listener))
     }
 
-    fun suffixColor(fromIndex: Int, toIndex: Int, @ColorRes colorRes: Int, listener: View.OnClickListener) {
+    fun suffixColor(
+        fromIndex: Int,
+        toIndex: Int,
+        @ColorRes colorRes: Int,
+        listener: View.OnClickListener
+    ) {
         val color = ResourcesCompat.getColor(textView.resources, colorRes, textView.context.theme)
         suffixColorList.add(SuffixColor(fromIndex, toIndex, color, listener))
     }
@@ -187,7 +201,11 @@ class TextViewSuffixWrapper(val textView: TextView) {
                     return
                 }
                 if (transition != null) {
-                    textView.setTextWithAnimator(content = collapseCache!!, transition = transition, sceneRoot = sceneRoot)
+                    textView.setTextWithAnimator(
+                        content = collapseCache!!,
+                        transition = transition,
+                        sceneRoot = sceneRoot
+                    )
                 } else {
                     textView.maxLines = targetLineCount
                     textView.ellipsize = TextUtils.TruncateAt.END
@@ -461,10 +479,11 @@ private fun TextView.binarySearch(
 
 fun TextView.makeExpandableText(suffixString: String?, colorResId: Int): TextViewSuffixWrapper {
     return TextViewSuffixWrapper(this).apply {
-        suffix = "...$suffixString"
+        val ellipsis = "..."
+        suffix = "$ellipsis$suffixString"
         suffix?.apply {
             suffixColor(
-                "...".length,
+                ellipsis.length,
                 length,
                 colorResId,
                 listener = { if (isCollapsed) expand() })
