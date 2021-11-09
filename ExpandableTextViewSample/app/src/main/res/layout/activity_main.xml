@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.chunchiehliang.socialview.SocialTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/dummy_string"
+        app:hashtagColor="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:mentionColor="@color/teal_200"
+        app:socialFlags="hashtag|mention" />
+
     <Button
         android:id="@+id/btn_toggle"
         android:layout_width="wrap_content"

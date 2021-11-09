@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.SocialView" parent="android:Widget.TextView">
+        <item name="hashtagColor">?android:colorAccent</item>
+        <item name="mentionColor">?android:colorAccent</item>
+        <item name="hyperlinkColor">?android:colorAccent</item>
+    </style>
+</resources>
