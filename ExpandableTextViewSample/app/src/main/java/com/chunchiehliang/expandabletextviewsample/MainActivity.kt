@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val wrapper =
-            findViewById<TextView>(R.id.textView).makeExpandableText("...查看更多", R.color.purple_200)
+            findViewById<TextView>(R.id.textView).makeExpandableText("查看更多", R.color.purple_200)
 
         findViewById<View>(R.id.btn_toggle).setOnClickListener {
             wrapper.toggle()

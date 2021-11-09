@@ -461,7 +461,7 @@ private fun TextView.binarySearch(
 
 fun TextView.makeExpandableText(suffixString: String?, colorResId: Int): TextViewSuffixWrapper {
     return TextViewSuffixWrapper(this).apply {
-        suffix = suffixString
+        suffix = "...$suffixString"
         suffix?.apply {
             suffixColor(
                 "...".length,
