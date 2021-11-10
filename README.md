@@ -34,7 +34,7 @@
 
 ---
 
-ExpandableTextView
+ExpandableTextView: Animated Expandable TextView and Social TextView (mention and hashtag)
 
 
 
