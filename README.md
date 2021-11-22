@@ -36,6 +36,9 @@
 
 ExpandableTextView: Animated Expandable TextView and Social TextView (mention and hashtag)
 
+Backlog: 
+[Airbnb epoxy](https://github.com/airbnb/epoxy)
+
 
 
 
