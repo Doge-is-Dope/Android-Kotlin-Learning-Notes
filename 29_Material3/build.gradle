@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext{
+        epoxy_version = "5.0.0-beta03"
         nav_version = "2.3.5"
     }
     repositories {
