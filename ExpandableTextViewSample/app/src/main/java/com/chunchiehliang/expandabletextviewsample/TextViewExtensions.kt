@@ -20,12 +20,6 @@ import androidx.transition.TransitionManager
 
 private const val logTag = "TextViewLayout"
 
-
-private fun log(any: Any?) {
-
-    Log.d(logTag, any.toString())
-}
-
 /**
  * TextViewBuilder
  * ellipsize textView with custom suffix.
@@ -383,7 +377,7 @@ fun TextView.setTextWithSuffix(
                         val start = System.currentTimeMillis()
                         autoSet(binarySearch(mainContent, suffix, targetLineCount, textWrapper))
                         val end = System.currentTimeMillis()
-                        log(">>>>>performance: ${end - start}ms")
+                        Log.d(logTag, ">>>>>performance: ${end - start}ms")
                     }
                 }
             }
@@ -394,7 +388,7 @@ fun TextView.setTextWithSuffix(
         val start = System.currentTimeMillis()
         autoSet(binarySearch(mainContent, suffix, targetLineCount, textWrapper))
         val end = System.currentTimeMillis()
-        log(">>>>>performance: ${end - start}ms")
+        Log.d(logTag, ">>>>>performance: ${end - start}ms")
     }
 }
 
@@ -415,7 +409,7 @@ private fun TextView.binarySearch(
         val key = (start shl 16) or end
         val hit = verifyCache[key]
         if (hit != null) {
-            log("verify: $end cached")
+            Log.d(logTag, "verify: $end cached")
             return hit
         }
         verifyCount++
@@ -423,17 +417,20 @@ private fun TextView.binarySearch(
         val context = "$tmp$suffix"
         text = textWrapper?.invoke(context, suffix, end) ?: context
         val lineCount = this.lineCount
-        log("verify: $end, lineCount = $lineCount")
+        Log.d(logTag, "verify: $end, lineCount = $lineCount")
         verifyCache[key] = lineCount
         return lineCount
     }
     if (layout == null) {
-        log("layout is null")
+        Log.d(logTag, "layout is null")
         return -1
     }
     val verify = verify(0, mainContent.length)
     if (verify <= targetLineCount) {
-        log("verify <= targetLineCount, verify = $verify, targetLineCount = $targetLineCount")
+        Log.d(
+            logTag,
+            "verify <= targetLineCount, verify = $verify, targetLineCount = $targetLineCount"
+        )
         text = mainContent
         return mainContent.length
     }
@@ -445,7 +442,7 @@ private fun TextView.binarySearch(
     var left = 0
     var right = mainContent.length
 
-    log("left = $left, right = $right")
+    Log.d(logTag, "left = $left, right = $right")
     while (left <= right) {
         val mid = (left + right) / 2
 
@@ -460,20 +457,20 @@ private fun TextView.binarySearch(
             if (nLineCount < targetLineCount + 1) {
                 left = mid + 1
             } else if (nLineCount == targetLineCount + 1) {
-                log("success = $mid, verifyCount = $verifyCount")
+                Log.d(logTag, "success = $mid, verifyCount = $verifyCount")
                 return mid
             } else {
                 // error impossible
-                log("impossible")
+                Log.d(logTag, "impossible")
                 break
             }
         } else {
             right = mid - 1
         }
 
-        log("$s, text = ${mainContent.substring(0, mid) + suffix}")
+        Log.d(logTag, "$s, text = ${mainContent.substring(0, mid) + suffix}")
     }
-    log("failed, verifyCount = $verifyCount")
+    Log.d(logTag, "failed, verifyCount = $verifyCount")
     return -1
 }
 
@@ -485,14 +482,14 @@ fun TextView.makeExpandableText(suffixString: String?, colorResId: Int): TextVie
             suffixColor(
                 ellipsis.length,
                 length,
-                colorResId,
-                listener = { if (isCollapsed) expand() })
+                colorResId
+            )
         }
         this.transition?.duration = 150
         sceneRoot = this.textView.parent.parent.parent as ViewGroup
         collapse(false)
-        this.textView.setOnClickListener {
-            Log.d("TextView", "clicked")
+        setOnClickListener {
+            if (isCollapsed) expand()
         }
     }
 }
