@@ -1,12 +1,9 @@
 package com.chunchiehliang.expandabletextviewsample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.ColorRes
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Reference: https://juejin.cn/post/6844903908028973070
