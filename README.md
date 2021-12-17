@@ -30,7 +30,7 @@
 26. ComposeSample: Android Compose
 27. NavigationSample: Navigation component
 28. MotionSample: Material motion
-29. MaterialDesignSample: Material Design 3 (Android 12)
+29. MaterialDesignSample: Material Design 3 (Android 12) Splash, Widget
 
 ---
 
