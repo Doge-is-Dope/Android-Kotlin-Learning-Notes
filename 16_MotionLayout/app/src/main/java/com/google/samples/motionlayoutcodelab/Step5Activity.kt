@@ -16,12 +16,7 @@
 package com.google.samples.motionlayoutcodelab
 
 import android.os.Bundle
-import android.view.View
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData
-
-import kotlinx.android.synthetic.main.activity_step1.*
+import androidx.appcompat.app.AppCompatActivity
 
 class Step5Activity : AppCompatActivity() {
 
