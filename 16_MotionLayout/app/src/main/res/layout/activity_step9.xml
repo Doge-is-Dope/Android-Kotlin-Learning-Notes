@@ -15,25 +15,25 @@
             android:id="@+id/msg1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            android:text="Lorem Ipsum is simply dummy text of the printing and"
             android:textColor="?colorOnPrimary"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/msg2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            android:text="Lorem Ipsum has beenled \nit to make a type specimen book."
             android:textColor="?colorOnPrimary"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/msg3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+            android:text="It has survived no"
             android:textColor="?colorOnPrimary"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
