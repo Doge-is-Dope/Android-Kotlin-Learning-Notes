@@ -12,6 +12,11 @@
         tools:layout="@layout/fragment_product">
 
         <deepLink app:uri="popchill://product/{productNo}" />
+
+        <deepLink
+            android:autoVerify="true"
+            app:uri="https://www.popchill.com/product/{productNo}" />
+
         <argument
             android:name="productNo"
             app:argType="long" />

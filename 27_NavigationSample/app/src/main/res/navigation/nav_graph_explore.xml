@@ -9,5 +9,17 @@
         android:id="@+id/exploreFragment"
         android:name="com.chunchiehliang.navigationsample.explore.ExploreFragment"
         android:label="@string/explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore">
+
+        <deepLink app:uri="popchill://explore/{postNo}" />
+
+        <deepLink
+            android:autoVerify="true"
+            app:uri="https://www.popchill.com/explore/{postNo}" />
+
+        <argument
+            android:name="postNo"
+            app:argType="long" />
+
+    </fragment>
 </navigation>
