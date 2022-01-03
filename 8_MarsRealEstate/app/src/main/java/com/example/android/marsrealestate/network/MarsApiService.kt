@@ -19,10 +19,8 @@ package com.example.android.marsrealestate.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -35,17 +33,17 @@ enum class MarsApiFilter(val value: String) { SHOW_RENT("rent"), SHOW_BUY("buy")
  * full Kotlin compatibility.
  */
 private val moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
+    .add(KotlinJsonAdapterFactory())
+    .build()
 
 /**
  * Use the Retrofit builder to build a retrofit object using a Moshi converter with our Moshi
  * object pointing to the desired URL
  */
 private val retrofit = Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .baseUrl(BASE_URL)
-        .build()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .baseUrl(BASE_URL)
+    .build()
 
 /**
  * A public interface that exposes the [getProperties] method
