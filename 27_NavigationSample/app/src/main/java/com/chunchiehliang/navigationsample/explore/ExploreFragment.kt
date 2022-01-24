@@ -18,8 +18,6 @@ class ExploreFragment : Fragment() {
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
 
-    private val args by navArgs<ExploreFragmentArgs>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,8 +36,6 @@ class ExploreFragment : Fragment() {
             )
             toolbar.setupWithNavController(findNavController(), appBarConfiguration)
         }
-
-        Timber.d("args postNo: ${args.postNo}")
     }
 
     override fun onDestroyView() {
