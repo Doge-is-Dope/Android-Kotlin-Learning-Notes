@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/componentListFragment"
-        android:name="com.chunchiehliang.material3.list.ComponentListFragment"
+        android:name="com.chunchiehliang.material3.ui.list.ComponentListFragment"
         android:label="fragment_component_list"
         tools:layout="@layout/fragment_component_list" />
 </navigation>

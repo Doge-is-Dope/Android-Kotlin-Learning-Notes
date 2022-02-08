@@ -1,4 +1,4 @@
-package com.chunchiehliang.material3.list
+package com.chunchiehliang.material3.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

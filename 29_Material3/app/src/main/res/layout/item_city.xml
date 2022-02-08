@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.chunchiehliang.material3.list.CityListener" />
+            type="com.chunchiehliang.material3.ui.list.CityListener" />
 
         <import type="android.graphics.Color" />
     </data>
