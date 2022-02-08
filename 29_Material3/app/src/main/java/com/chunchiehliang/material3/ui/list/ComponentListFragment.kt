@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
+import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
 import timber.log.Timber
 
 
@@ -21,7 +22,7 @@ class ComponentListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         val binding = FragmentComponentListBinding.inflate(layoutInflater)
 
@@ -29,6 +30,16 @@ class ComponentListFragment : Fragment() {
             setHasFixedSize(true)
             adapter = cityAdapter
             PagerSnapHelper().attachToRecyclerView(this)
+        }
+
+        binding.cityImgList.apply {
+            registerLifecycle(viewLifecycleOwner)
+            val images = listOf(
+                CarouselItem("https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080"),
+                CarouselItem("https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080"),
+                CarouselItem("https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080"),
+            )
+            setData(images)
         }
 
         cityAdapter.submitList(listOf(City(0, "#EF7C8E", "New York City", "sub", "desc"),

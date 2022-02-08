@@ -12,6 +12,19 @@
         android:layout_height="match_parent"
         tools:context=".ui.list.ComponentListFragment">
 
+        <org.imaginativeworld.popchillimagecarousel.ImageCarousel
+            android:id="@+id/city_img_list"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:autoPlay="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showBottomShadow="true"
+            app:showCaption="false"
+            app:showNavigationButtons="false"
+            app:showTopShadow="false" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/city_list"
             android:layout_width="0dp"
@@ -20,7 +33,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/city_img_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
