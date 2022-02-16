@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/firstFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/first_fragment"/>
+    <item
+        android:id="@+id/secondFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_pokemon"
+        android:title="@string/second_fragment"/>
+</menu>
