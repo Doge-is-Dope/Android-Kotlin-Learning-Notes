@@ -55,6 +55,10 @@
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="32dp"
+        app:ci_width="6dp"
+        app:ci_height="6dp"
+        app:ci_drawable="@drawable/indicator"
+        app:ci_drawable_unselected="@drawable/indicator_unselected"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView" />
 
     <FrameLayout
