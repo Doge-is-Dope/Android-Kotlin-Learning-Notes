@@ -9,7 +9,12 @@
         android:id="@+id/firstFragment"
         android:name="com.chunchiehliang.memoryleaksample.FirstFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" />
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_to_second"
+            app:destination="@id/secondFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/secondFragment"
