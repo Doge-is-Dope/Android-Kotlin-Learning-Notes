@@ -1,11 +1,14 @@
 package com.chunchiehliang.material3.ui.list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.PagerSnapHelper
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
+import android.widget.FrameLayout
+import androidx.fragment.app.Fragment
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
 import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
@@ -13,6 +16,9 @@ import timber.log.Timber
 
 
 class ComponentListFragment : Fragment() {
+
+    private var _binding: FragmentComponentListBinding? = null
+    private val binding get() = _binding!!
 
     private val cityAdapter by lazy {
         CityAdapter(listener = CityListener {
@@ -24,12 +30,21 @@ class ComponentListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val binding = FragmentComponentListBinding.inflate(layoutInflater)
+        _binding = FragmentComponentListBinding.inflate(inflater, container, false)
 
         binding.cityList.apply {
             setHasFixedSize(true)
             adapter = cityAdapter
-            PagerSnapHelper().attachToRecyclerView(this)
+            val listener = object : HidingScrollListener() {
+                override fun onHide() {
+                    hideViews()
+                }
+
+                override fun onShow() {
+                    showViews()
+                }
+            }
+            addOnScrollListener(listener)
         }
 
         binding.cityImgList.apply {
@@ -43,7 +58,7 @@ class ComponentListFragment : Fragment() {
         }
 
         cityAdapter.submitList(listOf(City(0, "#EF7C8E", "New York City", "sub", "desc"),
-            City(1, "#FAE8E0", "Boston", "sub", "desc"),
+            City(1, "#FAE8E0", "Boston", "Boston is a state of mind", "desc"),
             City(2, "#B6E2D3", "Philadelphia", "sub", "desc"),
             City(3, "#D8A7B1", "Washington DC", "sub", "desc"),
             City(4, "#FFF4BD", "New Haven", "sub", "desc"),
@@ -53,5 +68,26 @@ class ComponentListFragment : Fragment() {
             City(8, "#376380", "Worcester", "sub", "desc")))
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun hideViews() {
+        val lp = binding.buttonGroup.layoutParams as ViewGroup.MarginLayoutParams
+        val groupMargin = lp.bottomMargin
+        binding.buttonGroup.animate()
+            .translationY((binding.buttonGroup.height + groupMargin).toFloat())
+            .setInterpolator(AccelerateInterpolator(1.5F))
+            .start()
+    }
+
+    private fun showViews() {
+        binding.buttonGroup.animate()
+            .translationY(0F)
+            .setInterpolator(DecelerateInterpolator(1.5F))
+            .start()
     }
 }

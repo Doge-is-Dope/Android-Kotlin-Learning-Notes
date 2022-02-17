@@ -7,33 +7,79 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.list.ComponentListFragment">
+        android:layout_height="match_parent">
 
-        <org.imaginativeworld.popchillimagecarousel.ImageCarousel
-            android:id="@+id/city_img_list"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            app:autoPlay="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:showBottomShadow="true"
-            app:showCaption="false"
-            app:showNavigationButtons="false"
-            app:showTopShadow="false" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.list.ComponentListFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/city_list"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/city_img_list" />
+            <org.imaginativeworld.popchillimagecarousel.ImageCarousel
+                android:id="@+id/city_img_list"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:autoPlay="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showBottomShadow="true"
+                app:showCaption="false"
+                app:showNavigationButtons="false"
+                app:showTopShadow="false" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/city_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/city_img_list" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:id="@+id/button_group"
+            android:layout_width="wrap_content"
+            android:layout_height="?minTouchTargetSize"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="32dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_sort"
+                style="@style/MyLeftButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/sort"
+                app:icon="@drawable/ic_sort"
+                app:iconGravity="start" />
+
+            <View
+                android:layout_width="1.5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/button_divider" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_filter"
+                style="@style/MyRightButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/filter"
+                app:icon="@drawable/ic_filter"
+                app:iconGravity="end" />
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
