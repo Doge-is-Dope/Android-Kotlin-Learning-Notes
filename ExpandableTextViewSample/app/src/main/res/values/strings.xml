@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ExpandableTextViewSample</string>
     <string name="dummy_string">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor massa ut dolor sagittis #好きです pretium. Proin leo augue, scelerisque sit amet lectus eget, #超讚der sodales facilisis libero. Mauris vehicula, lacus sit amet pulvinar bibendum, mi tortor varius justo, id iaculis dolor arcu@mich_as123 non ligula. Nulla dignissim nibh nunc, a viverra erat bibendum vel. Etiam sed maximus metus. #gucci Ut sit amet eros non justo auctor porttitor. Aenean placerat imperdiet lacus et molestie. Quisque sit amet suscipit lacus. Sed nec #안녕하세요 ipsum pellentesque, consectetur arcu vel, elementum felis. Integer nec dui magna. Aenean non nisi consequat, tincidunt lorem nec, molestie neque. Nulla tortor ex, porttitor et pharetra eu, malesuada vitae mauris.</string>
+    <string name="toggle">toggle</string>
 </resources>
