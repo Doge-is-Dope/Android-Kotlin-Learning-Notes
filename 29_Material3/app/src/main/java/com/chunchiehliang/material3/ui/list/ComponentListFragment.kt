@@ -50,22 +50,27 @@ class ComponentListFragment : Fragment() {
         binding.cityImgList.apply {
             registerLifecycle(viewLifecycleOwner)
             val images = listOf(
-                CarouselItem("https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080"),
-                CarouselItem("https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080"),
-                CarouselItem("https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080"),
+                CarouselItem("https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=800"),
+                CarouselItem("https://images.unsplash.com/photo-1644976541214-2a5d7e1a1f79?w=800"),
+                CarouselItem("https://images.unsplash.com/photo-1643944398479-0fd9eaee5cbc?w=800"),
             )
             setData(images)
         }
 
-        cityAdapter.submitList(listOf(City(0, "#EF7C8E", "New York City", "sub", "desc"),
-            City(1, "#FAE8E0", "Boston", "Boston is a state of mind", "desc"),
-            City(2, "#B6E2D3", "Philadelphia", "sub", "desc"),
-            City(3, "#D8A7B1", "Washington DC", "sub", "desc"),
-            City(4, "#FFF4BD", "New Haven", "sub", "desc"),
-            City(5, "#F4B9B8", "Cambridge", "sub", "desc"),
-            City(6, "#887BB0", "Providence", "sub", "desc"),
-            City(7, "#85D2D0", "Hartford", "sub", "desc"),
-            City(8, "#376380", "Worcester", "sub", "desc")))
+        cityAdapter.submitList(listOf(
+            City(0, "#EF7C8E", "New York City", "The Big Apple", "desc"),
+            City(1, "#FAE8E0", "Boston", "The City on a Hill", "desc"),
+            City(2, "#354f52", "Philadelphia", "The City of Brotherly Love", "desc"),
+            City(3, "#e3d5ca", "Washington DC", "The District", "desc"),
+            City(4, "#FFF4BD", "New Haven", "The Elm City", "desc"),
+            City(5, "#F4B9B8", "Seattle", "Emerald City", "desc"),
+            City(6, "#f2d0a9", "Providence", "Chance", "desc"),
+            City(7, "#85D2D0", "Houston", "Space City", "desc"),
+            City(8, "#376380", "Los Angeles", "L.A.", "desc"),
+            City(9, "#7678ed", "Salt Lake City", "The Crossroads of the West", "desc"),
+            City(10, "#f07167", "Atlanta", "The ATL", "desc"),
+            City(11, "#B6E2D3", "Chicago", "Windy City", "desc"),
+        ))
 
         return binding.root
     }
