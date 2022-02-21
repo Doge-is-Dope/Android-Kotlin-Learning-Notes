@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import android.widget.FrameLayout
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
-import com.chunchiehliang.material3.MainActivity
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.chunchiehliang.material3.R
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
+import com.google.android.material.transition.FadeThroughProvider
+import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
 import timber.log.Timber
 
@@ -38,17 +42,19 @@ class ComponentListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.toolbar.setupWithNavController(findNavController())
+
         binding.cityList.apply {
             setHasFixedSize(true)
             adapter = cityAdapter
             val listener = object : HidingScrollListener() {
                 override fun onHide() {
-                    (activity as MainActivity).setBottomNavigationVisibility(false)
                     hideViews()
                 }
 
                 override fun onShow() {
-                    (activity as MainActivity).setBottomNavigationVisibility()
                     showViews()
                 }
             }

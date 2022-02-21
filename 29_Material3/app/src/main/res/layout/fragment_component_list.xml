@@ -11,38 +11,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.imaginativeworld.popchillimagecarousel.ImageCarousel
+                    android:id="@+id/city_img_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    app:autoPlay="true"
+                    app:showBottomShadow="true"
+                    app:showCaption="false"
+                    app:showNavigationButtons="false"
+                    app:showTopShadow="false" />
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/Theme.Material3.Dark"
+                    app:menu="@menu/top_app_bar_menu" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/city_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.list.ComponentListFragment">
-
-            <org.imaginativeworld.popchillimagecarousel.ImageCarousel
-                android:id="@+id/city_img_list"
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                app:autoPlay="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:showBottomShadow="true"
-                app:showCaption="false"
-                app:showNavigationButtons="false"
-                app:showTopShadow="false" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/city_list"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:clipToPadding="false"
-                android:orientation="vertical"
-                app:spanCount="2"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/city_img_list" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:spanCount="2" />
 
         <LinearLayout
             android:id="@+id/button_group"
