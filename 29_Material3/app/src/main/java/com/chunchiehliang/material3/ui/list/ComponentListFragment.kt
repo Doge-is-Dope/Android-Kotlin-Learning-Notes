@@ -87,7 +87,8 @@ class ComponentListFragment : Fragment() {
             findNavController().navigate(ComponentListFragmentDirections.actionToSort())
         }
         binding.btnFilter.setOnClickListener {
-            findNavController().navigate(ComponentListFragmentDirections.actionToFilter())
+            findNavController().navigate(ComponentListFragmentDirections.actionToFilter(id = "1",
+                sizes = null))
         }
     }
 

@@ -24,6 +24,7 @@ class ExploreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.btnNavToList.setOnClickListener {
             findNavController().navigate(ExploreFragmentDirections.actionToList())
         }

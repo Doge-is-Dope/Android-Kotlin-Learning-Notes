@@ -37,6 +37,36 @@
     <dialog
         android:id="@+id/filterFragment"
         android:name="com.chunchiehliang.material3.ui.filter.FilterFragment"
-        tools:layout="@layout/fragment_filter" />
+        tools:layout="@layout/fragment_filter">
+
+        <deepLink app:uri="example://search/{id}?max_price={maxPrice}&amp;min_price={minPrice}&amp;conditions={conditions}&amp;sizes={sizes}&amp;sort={sort}" />
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="minPrice"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="maxPrice"
+            android:defaultValue="20000"
+            app:argType="integer" />
+        <argument
+            android:name="conditions"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="sizes"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="sort"
+            android:defaultValue="relevance"
+            app:argType="com.chunchiehliang.material3.data.Sort" />
+    </dialog>
 
 </navigation>
