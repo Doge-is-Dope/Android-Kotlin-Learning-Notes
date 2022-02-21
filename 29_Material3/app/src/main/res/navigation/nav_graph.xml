@@ -8,10 +8,13 @@
     <fragment
         android:id="@+id/componentListFragment"
         android:name="com.chunchiehliang.material3.ui.list.ComponentListFragment"
-        tools:layout="@layout/fragment_component_list" >
+        tools:layout="@layout/fragment_component_list">
         <action
             android:id="@+id/action_to_sort"
             app:destination="@id/sortFragment" />
+        <action
+            android:id="@+id/action_to_filter"
+            app:destination="@id/filterFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -30,4 +33,10 @@
         android:id="@+id/sortFragment"
         android:name="com.chunchiehliang.material3.ui.sort.SortFragment"
         tools:layout="@layout/fragment_sort" />
+
+    <dialog
+        android:id="@+id/filterFragment"
+        android:name="com.chunchiehliang.material3.ui.filter.FilterFragment"
+        tools:layout="@layout/fragment_filter" />
+
 </navigation>

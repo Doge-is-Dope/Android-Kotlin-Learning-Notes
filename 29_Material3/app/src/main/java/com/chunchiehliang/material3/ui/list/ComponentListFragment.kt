@@ -1,18 +1,19 @@
 package com.chunchiehliang.material3.ui.list
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
+import com.chunchiehliang.material3.ui.setDrawableEnd
 import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
 import timber.log.Timber
 
@@ -85,8 +86,11 @@ class ComponentListFragment : Fragment() {
         binding.btnSort.setOnClickListener {
             findNavController().navigate(ComponentListFragmentDirections.actionToSort())
         }
+        binding.btnFilter.setOnClickListener {
+            findNavController().navigate(ComponentListFragmentDirections.actionToFilter())
+        }
     }
-    
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
