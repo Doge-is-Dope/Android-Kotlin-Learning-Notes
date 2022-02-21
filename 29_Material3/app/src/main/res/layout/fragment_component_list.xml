@@ -18,7 +18,9 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:expandedTitleGravity="top"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                 <org.imaginativeworld.popchillimagecarousel.ImageCarousel
                     android:id="@+id/city_img_list"
@@ -34,7 +36,7 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:theme="@style/Theme.Material3.Dark"
+                    app:layout_collapseMode="pin"
                     app:menu="@menu/top_app_bar_menu" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>

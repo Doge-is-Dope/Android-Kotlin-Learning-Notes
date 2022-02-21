@@ -11,9 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="test" />
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_sort" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

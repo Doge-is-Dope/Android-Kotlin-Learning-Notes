@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sortOption"
+            type="com.chunchiehliang.material3.data.SortOption" />
+
+        <variable
+            name="listener"
+            type="com.chunchiehliang.material3.ui.sort.OptionListener" />
+
+        <import type="androidx.core.content.ContextCompat" />
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:onClick="@{() -> listener.onClick(sortOption)}"
+        android:padding="@dimen/material_margin"
+        android:text="@{sortOption.title}"
+        app:setCheckedIcon="@{sortOption.selected}" />
+</layout>

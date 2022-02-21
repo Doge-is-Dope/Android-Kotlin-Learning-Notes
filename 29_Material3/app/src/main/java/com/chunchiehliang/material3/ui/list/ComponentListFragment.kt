@@ -2,20 +2,17 @@ package com.chunchiehliang.material3.ui.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.chunchiehliang.material3.R
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
-import com.google.android.material.transition.FadeThroughProvider
-import com.google.android.material.transition.MaterialFadeThrough
-import com.google.android.material.transition.MaterialSharedAxis
 import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
 import timber.log.Timber
 
@@ -42,7 +39,6 @@ class ComponentListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.lifecycleOwner = viewLifecycleOwner
         binding.toolbar.setupWithNavController(findNavController())
 
@@ -86,9 +82,11 @@ class ComponentListFragment : Fragment() {
             City(11, "#B6E2D3", "Chicago", "Windy City", "desc"),
         ))
 
-
+        binding.btnSort.setOnClickListener {
+            findNavController().navigate(ComponentListFragmentDirections.actionToSort())
+        }
     }
-
+    
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
