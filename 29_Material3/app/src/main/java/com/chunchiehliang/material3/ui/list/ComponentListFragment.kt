@@ -9,6 +9,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import com.chunchiehliang.material3.MainActivity
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
 import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
@@ -32,15 +33,22 @@ class ComponentListFragment : Fragment() {
     ): View {
         _binding = FragmentComponentListBinding.inflate(inflater, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.cityList.apply {
             setHasFixedSize(true)
             adapter = cityAdapter
             val listener = object : HidingScrollListener() {
                 override fun onHide() {
+                    (activity as MainActivity).setBottomNavigationVisibility(false)
                     hideViews()
                 }
 
                 override fun onShow() {
+                    (activity as MainActivity).setBottomNavigationVisibility()
                     showViews()
                 }
             }
@@ -72,7 +80,7 @@ class ComponentListFragment : Fragment() {
             City(11, "#B6E2D3", "Chicago", "Windy City", "desc"),
         ))
 
-        return binding.root
+
     }
 
     override fun onDestroyView() {
