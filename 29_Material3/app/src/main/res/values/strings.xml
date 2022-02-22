@@ -8,4 +8,11 @@
     <string name="to_list">To list</string>
     <string name="config">Config</string>
     <string name="Apply">apply</string>
+
+
+    <string name="any">Any</string>
+
+    <string name="above_value">%1$s+</string>
+    <string name="up_to_value">Up to %1$s</string>
+    <string name="between_values">%1$s to %2$s</string>
 </resources>

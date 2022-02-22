@@ -7,9 +7,10 @@
 
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_nav_to_list"
@@ -18,5 +19,42 @@
             android:layout_margin="@dimen/material_margin"
             android:text="@string/to_list" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/material_margin"
+            android:text="Popular"
+            android:textSize="18sp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_margin">
+
+            <com.google.android.material.chip.Chip
+            android:id="@+id/chip_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="大衣"
+            app:ensureMinTouchTargetSize="false"
+            android:textColor="?colorPrimary"
+            android:textSize="14sp"
+            app:chipCornerRadius="60dp"
+            app:chipStrokeColor="?colorPrimary" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_test2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="新年斷捨離故事集"
+                app:chipStrokeColor="#E0E0E0"
+                app:ensureMinTouchTargetSize="false"
+                android:textColor="#2B2B2B"
+                android:textSize="14sp"
+                app:chipCornerRadius="60dp" />
+        </com.google.android.material.chip.ChipGroup>
+    </LinearLayout>
 </layout>
