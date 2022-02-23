@@ -28,6 +28,9 @@ class ExploreFragment : Fragment() {
         binding.btnNavToList.setOnClickListener {
             findNavController().navigate(ExploreFragmentDirections.actionToList())
         }
+        binding.tvSearch.setOnClickListener {
+            findNavController().navigate(ExploreFragmentDirections.actionToSearch())
+        }
     }
 
     override fun onDestroyView() {
