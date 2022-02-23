@@ -56,8 +56,10 @@ class FilterFragment : BottomSheetDialogFragment() {
                 getString(R.string.between_values, formattedMinValueString, formattedMaxValueString)
         }
 
-        val sizes = args.sizes?.let { JsonUtil.parseStringToIntList(it) }
-        val conditions = args.conditions?.let { JsonUtil.parseStringToIntList(it) }
+//        val sizes = args.sizes?.let { JsonUtil.parseStringToIntList(it) }
+//        val conditions = args.conditions?.let { JsonUtil.parseStringToIntList(it) }
+        val sizes = args.sizes?.split(",")
+        val conditions = args.conditions
         Timber.d("id: ${args.id}" +
                 "\nmax: ${args.maxPrice}" +
                 "\nmin: ${args.minPrice}" +
