@@ -6,6 +6,15 @@
     app:startDestination="@id/exploreFragment">
 
     <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.chunchiehliang.material3.ui.explore.ExploreFragment"
+        tools:layout="@layout/fragment_explore">
+        <action
+            android:id="@+id/action_to_list"
+            app:destination="@id/componentListFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/componentListFragment"
         android:name="com.chunchiehliang.material3.ui.list.ComponentListFragment"
         tools:layout="@layout/fragment_component_list">
@@ -20,14 +29,6 @@
         android:id="@+id/profileFragment"
         android:name="com.chunchiehliang.material3.ui.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/exploreFragment"
-        android:name="com.chunchiehliang.material3.ui.explore.ExploreFragment"
-        tools:layout="@layout/fragment_explore">
-        <action
-            android:id="@+id/action_to_list"
-            app:destination="@id/componentListFragment" />
-    </fragment>
 
     <dialog
         android:id="@+id/sortFragment"
