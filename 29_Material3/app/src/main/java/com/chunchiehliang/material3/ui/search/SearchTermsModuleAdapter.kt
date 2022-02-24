@@ -1,6 +1,5 @@
 package com.chunchiehliang.material3.ui.search
 
-import android.R.drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -65,14 +64,12 @@ class SearchTermsModuleAdapter(val listener: SearchTermListener) :
 
 
 class SearchTermModuleDiffCallback : DiffUtil.ItemCallback<SearchTermsModule>() {
-    override fun areItemsTheSame(oldItem: SearchTermsModule, newItem: SearchTermsModule): Boolean {
-        return oldItem.title == newItem.title
-    }
+    override fun areItemsTheSame(oldItem: SearchTermsModule, newItem: SearchTermsModule): Boolean =
+        oldItem.title == newItem.title
 
     override fun areContentsTheSame(
         oldItem: SearchTermsModule,
         newItem: SearchTermsModule,
-    ): Boolean {
-        return oldItem == newItem
-    }
+    ): Boolean =
+        oldItem == newItem
 }

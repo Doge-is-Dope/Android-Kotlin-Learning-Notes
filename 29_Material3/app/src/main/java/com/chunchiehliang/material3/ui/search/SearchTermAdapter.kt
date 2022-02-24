@@ -18,15 +18,16 @@ class SearchTermAdapter(private val listener: SearchTermListener) :
 
     override fun onBindViewHolder(holder: SearchTermViewHolder, position: Int) {
         getItem(position)?.let { term ->
-            holder.bind(term)
+            holder.bind(term, listener)
         }
     }
 
 
     class SearchTermViewHolder(private var binding: ItemSearchTermBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(term: SearchTerm) {
+        fun bind(term: SearchTerm, listener: SearchTermListener) {
             binding.searchTerm = term
+            binding.searchTermListener = listener
             binding.executePendingBindings()
         }
 

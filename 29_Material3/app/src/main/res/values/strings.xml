@@ -16,4 +16,5 @@
     <string name="up_to_value">Up to %1$s</string>
     <string name="between_values">%1$s to %2$s</string>
     <string name="search_anything">Search anything</string>
+    <string name="recommended">Recommended</string>
 </resources>

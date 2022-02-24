@@ -8,10 +8,6 @@
         <variable
             name="title"
             type="String" />
-
-        <variable
-            name="listener"
-            type="com.chunchiehliang.material3.ui.sort.OptionListener" />
     </data>
 
     <LinearLayout
