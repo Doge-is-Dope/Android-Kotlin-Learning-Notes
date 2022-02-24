@@ -60,10 +60,10 @@ class SearchFragment : Fragment() {
                 SearchTerm(0, "Shirt", false),
             )),
             SearchTermsModule("Hot", listOf(
-                SearchTerm(0, "Lorem ipsum dolor sit amet", true),
+                SearchTerm(0, "Lorem ipsum sit amet", true),
                 SearchTerm(3, "aliquam"),
                 SearchTerm(1, "egeturna"),
-                SearchTerm(2, "vel"),
+                SearchTerm(2, "vel sit"),
                 SearchTerm(4, "Etiam egestas"),
             )),
         ))

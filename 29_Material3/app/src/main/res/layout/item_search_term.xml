@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:onClick="@{() -> searchTermListener.onClick(searchTerm)}"
         android:padding="12dp"
+        android:layout_margin="6dp"
         android:text="@{searchTerm.title}"
         android:textColor="@{searchTerm.isHighlighted ? @color/purple_500 : @color/term_default_text_color}"
         android:textSize="14sp"

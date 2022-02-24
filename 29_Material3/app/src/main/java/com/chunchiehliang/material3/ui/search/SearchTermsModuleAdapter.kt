@@ -35,16 +35,15 @@ class SearchTermsModuleAdapter(val listener: SearchTermListener) :
             binding.rvChipGroup.apply {
                 val flexBoxLayoutManager = FlexboxLayoutManager(context).apply {
                     flexDirection = FlexDirection.ROW
-                    justifyContent = JustifyContent.FLEX_START
-                    alignItems = AlignItems.FLEX_START
-                    flexWrap = FlexWrap.WRAP
-
+//                    justifyContent = JustifyContent.FLEX_START
+//                    alignItems = AlignItems.BASELINE
+//                    flexWrap = FlexWrap.WRAP
                 }
                 val itemDecoration = FlexboxItemDecoration(context).apply {
                     setOrientation(FlexboxItemDecoration.BOTH)
                     setDrawable(ContextCompat.getDrawable(context, R.drawable.divider_search_term))
                 }
-                if (itemDecorationCount == 0) addItemDecoration(itemDecoration)
+//                if (itemDecorationCount == 0) addItemDecoration(itemDecoration)
                 layoutManager = flexBoxLayoutManager
                 adapter = searchTermAdapter
             }
