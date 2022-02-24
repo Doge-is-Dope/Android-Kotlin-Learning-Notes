@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="searchTerm"
+            type="com.chunchiehliang.material3.data.SearchTerm" />
+
+        <variable
+            name="listener"
+            type="com.chunchiehliang.material3.ui.search.SearchTermListener" />
+
+        <import type="androidx.core.content.ContextCompat" />
+    </data>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> listener.onClick(searchTerm)}"
+        android:padding="12dp"
+        android:text="@{searchTerm.title}"
+        android:textSize="14sp"
+        app:chipCornerRadius="60dp"
+        android:textColor="@{searchTerm.isHighlighted ? @color/purple_200 : @color/term_default_text_color}"
+        app:chipStrokeColor="@{searchTerm.isHighlighted ? @color/purple_200 : @color/term_default_stoke_color}"
+        app:ensureMinTouchTargetSize="false"
+        tools:text="新年斷捨離故事集" />
+</layout>
