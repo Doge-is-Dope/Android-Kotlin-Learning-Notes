@@ -26,6 +26,12 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
+    private val searchUsersModuleAdapter by lazy {
+        SearchUsersModuleAdapter(SearchUsersModuleAdapter.SearchUsersModuleViewHolder.Listener {
+            Timber.d("clicked search users")
+        })
+    }
+
     private val searchTermsModuleAdapter by lazy {
         SearchTermsModuleAdapter(SearchTermListener {
             Timber.d("clicked: $it")
@@ -50,10 +56,16 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.toolbar.setupWithNavController(findNavController())
-        val concatAdapter = ConcatAdapter(searchTermsModuleAdapter, promotionsModuleAdapter)
+        val concatAdapter = ConcatAdapter(
+            searchUsersModuleAdapter,
+            searchTermsModuleAdapter,
+            promotionsModuleAdapter)
+
         binding.dataList.apply {
             adapter = concatAdapter
         }
+
+        searchUsersModuleAdapter.submitList(listOf("test"))
 
         searchTermsModuleAdapter.submitList(listOf(
             SearchTermsModule("Recent", listOf(
