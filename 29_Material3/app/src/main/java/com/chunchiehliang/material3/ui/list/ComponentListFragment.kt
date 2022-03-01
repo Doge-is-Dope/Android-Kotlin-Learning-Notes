@@ -1,7 +1,5 @@
 package com.chunchiehliang.material3.ui.list
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
-import com.chunchiehliang.material3.ui.setDrawableEnd
 import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
 import timber.log.Timber
 
@@ -83,12 +80,15 @@ class ComponentListFragment : Fragment() {
             City(11, "#B6E2D3", "Chicago", "Windy City", "desc"),
         ))
 
-        binding.btnSort.setOnClickListener {
-            findNavController().navigate(ComponentListFragmentDirections.actionToSort())
-        }
-        binding.btnFilter.setOnClickListener {
-            findNavController().navigate(ComponentListFragmentDirections.actionToFilter(id = "1",
-                sizes = null))
+        binding.layoutSearchButtonGroup.apply {
+            linearButtonGroup.clipToOutline = true
+            btnSort.setOnClickListener {
+                findNavController().navigate(ComponentListFragmentDirections.actionToSort())
+            }
+            btnFilter.setOnClickListener {
+                findNavController().navigate(ComponentListFragmentDirections.actionToFilter(id = "1",
+                    sizes = null))
+            }
         }
     }
 
@@ -98,16 +98,16 @@ class ComponentListFragment : Fragment() {
     }
 
     private fun hideViews() {
-        val lp = binding.buttonGroup.layoutParams as ViewGroup.MarginLayoutParams
+        val lp = binding.layoutSearchButtonGroup.linearButtonGroup.layoutParams as ViewGroup.MarginLayoutParams
         val groupMargin = lp.bottomMargin
-        binding.buttonGroup.animate()
-            .translationY((binding.buttonGroup.height + groupMargin).toFloat())
+        binding.layoutSearchButtonGroup.linearButtonGroup.animate()
+            .translationY((binding.layoutSearchButtonGroup.linearButtonGroup.height + groupMargin).toFloat())
             .setInterpolator(AccelerateInterpolator(1.5F))
             .start()
     }
 
     private fun showViews() {
-        binding.buttonGroup.animate()
+        binding.layoutSearchButtonGroup.linearButtonGroup.animate()
             .translationY(0F)
             .setInterpolator(DecelerateInterpolator(1.5F))
             .start()

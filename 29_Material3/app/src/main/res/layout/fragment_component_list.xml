@@ -51,43 +51,8 @@
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             app:spanCount="2" />
 
-        <LinearLayout
-            android:id="@+id/button_group"
-            android:layout_width="wrap_content"
-            android:layout_height="?minTouchTargetSize"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_margin="32dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_sort"
-                style="@style/MyLeftButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="@string/sort"
-                app:icon="@drawable/ic_sort"
-                app:iconGravity="start" />
-
-            <View
-                android:layout_width="1.5dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@drawable/button_divider" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_filter"
-                style="@style/MyRightButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="@string/filter"
-                app:icon="@drawable/ic_filter"
-                app:iconGravity="end" />
-        </LinearLayout>
+        <include
+            android:id="@+id/layout_search_button_group"
+            layout="@layout/layout_search_floating_button_group" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
