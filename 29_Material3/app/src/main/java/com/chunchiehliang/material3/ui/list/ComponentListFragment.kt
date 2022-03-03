@@ -8,6 +8,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.material3.data.City
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
@@ -19,6 +20,8 @@ class ComponentListFragment : Fragment() {
 
     private var _binding: FragmentComponentListBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<ComponentListFragmentArgs>()
 
     private val cityAdapter by lazy {
         CityAdapter(listener = CityListener {
@@ -86,10 +89,18 @@ class ComponentListFragment : Fragment() {
                 findNavController().navigate(ComponentListFragmentDirections.actionToSort())
             }
             btnFilter.setOnClickListener {
-                findNavController().navigate(ComponentListFragmentDirections.actionToFilter(id = "1",
-                    sizes = null))
+                findNavController().navigate(ComponentListFragmentDirections.actionToFilter())
             }
         }
+
+        val sizes = args.sizes?.split(",")
+        val conditions = args.conditions
+        Timber.d("id: ${args.term}" +
+                "\nmax: ${args.maxPrice}" +
+                "\nmin: ${args.minPrice}" +
+                "\nconditions: $conditions" +
+                "\nsizes: $sizes" +
+                "\nsort: ${args.sort}")
     }
 
     override fun onDestroyView() {

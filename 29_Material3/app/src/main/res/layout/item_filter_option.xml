@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="filterOption"
+            type="com.chunchiehliang.material3.data.FilterOption" />
+
+        <variable
+            name="listener"
+            type="com.chunchiehliang.material3.ui.filter.OptionListener" />
+
+        <import type="androidx.core.content.ContextCompat" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:onClick="@{() -> listener.onClick(filterOption)}"
+        android:orientation="horizontal"
+        android:padding="@dimen/material_margin">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{filterOption.title}"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            tools:text="價格" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:text="@{filterOption.value}"
+            tools:text="100+" />
+    </LinearLayout>
+</layout>

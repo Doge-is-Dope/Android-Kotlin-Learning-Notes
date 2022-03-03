@@ -26,7 +26,7 @@ class ExploreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.btnNavToList.setOnClickListener {
-            findNavController().navigate(ExploreFragmentDirections.actionToList())
+            findNavController().navigate(ExploreFragmentDirections.actionToList(""))
         }
         binding.tvSearch.setOnClickListener {
             findNavController().navigate(ExploreFragmentDirections.actionToSearch())

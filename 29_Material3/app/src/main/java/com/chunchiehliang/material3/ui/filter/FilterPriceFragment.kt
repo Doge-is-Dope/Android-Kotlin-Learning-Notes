@@ -1,38 +1,26 @@
 package com.chunchiehliang.material3.ui.filter
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
 import com.chunchiehliang.material3.R
-import com.chunchiehliang.material3.databinding.FragmentFilterBinding
-import com.chunchiehliang.material3.utils.JsonUtil
+import com.chunchiehliang.material3.databinding.FragmentFilterPriceBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.slider.RangeSlider
-import com.google.android.material.slider.Slider
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import timber.log.Timber
 import java.text.NumberFormat
 import java.util.*
 
 
-class FilterFragment : BottomSheetDialogFragment() {
+class FilterPriceFragment : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentFilterBinding? = null
+    private var _binding: FragmentFilterPriceBinding? = null
     private val binding get() = _binding!!
-
-    private val args by navArgs<FilterFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentFilterBinding.inflate(inflater, container, false)
+        _binding = FragmentFilterPriceBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,14 +46,6 @@ class FilterFragment : BottomSheetDialogFragment() {
 
 //        val sizes = args.sizes?.let { JsonUtil.parseStringToIntList(it) }
 //        val conditions = args.conditions?.let { JsonUtil.parseStringToIntList(it) }
-        val sizes = args.sizes?.split(",")
-        val conditions = args.conditions
-        Timber.d("id: ${args.id}" +
-                "\nmax: ${args.maxPrice}" +
-                "\nmin: ${args.minPrice}" +
-                "\nconditions: $conditions" +
-                "\nsizes: $sizes" +
-                "\nsort: ${args.sort}")
     }
 
     override fun onDestroyView() {
