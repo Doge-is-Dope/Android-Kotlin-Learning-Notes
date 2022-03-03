@@ -5,10 +5,8 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedDispatcher
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.material3.R
 import com.chunchiehliang.material3.databinding.FragmentFilterBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -32,7 +30,6 @@ class FilterFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleNavigation()
-        binding.toolbar.setupWithNavController(navController)
     }
 
     override fun onDestroyView() {
@@ -51,5 +48,4 @@ class FilterFragment : BottomSheetDialogFragment() {
             true
         }
     }
-
 }

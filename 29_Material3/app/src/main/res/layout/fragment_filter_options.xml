@@ -12,13 +12,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center"
+            android:text="@string/filter"
+            android:textAppearance="@style/TextAppearance.Material3.ActionBar.Title" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/options"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="3"
             tools:listitem="@layout/item_filter_option" />
+
+        <Button
+            android:id="@+id/btn_apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/material_margin"
+            android:text="@string/apply" />
     </LinearLayout>
 </layout>

@@ -7,19 +7,30 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.material3.data.FilterOption
 import com.chunchiehliang.material3.databinding.ItemFilterOptionBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 class FilterOptionAdapter(private val listener: OptionListener) :
-    ListAdapter<FilterOption, FilterOptionAdapter.OptionViewHolder>(OptionDiffCallback()) {
+    ListAdapter<FilterOption, FilterOptionAdapter.OptionViewHolder>(OptionDiffCallback) {
+
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionViewHolder {
         return OptionViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: OptionViewHolder, position: Int) {
-        getItem(position)?.let { option ->
+        getItem(position).let { option ->
             holder.bind(option, listener)
         }
     }
+
+//    override fun submitList(list: List<FilterOption>?) {
+//        adapterScope.launch {
+//            val newList = list?.map { item -> item.copy() }
+//            super.submitList(newList)
+//        }
+//    }
 
 
     class OptionViewHolder(private var binding: ItemFilterOptionBinding) :
@@ -41,9 +52,9 @@ class FilterOptionAdapter(private val listener: OptionListener) :
 }
 
 
-class OptionDiffCallback : DiffUtil.ItemCallback<FilterOption>() {
+object OptionDiffCallback : DiffUtil.ItemCallback<FilterOption>() {
     override fun areItemsTheSame(oldItem: FilterOption, newItem: FilterOption): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem == newItem
     }
 
     override fun areContentsTheSame(oldItem: FilterOption, newItem: FilterOption): Boolean {

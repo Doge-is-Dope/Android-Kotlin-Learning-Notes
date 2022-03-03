@@ -1,0 +1,54 @@
+package com.chunchiehliang.material3.ui.filter
+
+import android.app.Application
+import androidx.lifecycle.*
+import com.chunchiehliang.material3.data.FilterOption
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import timber.log.Timber
+
+class FilterViewModel(val app: Application) : ViewModel() {
+
+    private val options = listOf(
+        FilterOption(0, "Category"),
+        FilterOption(1, "Price"),
+    )
+
+    private val _priceRange = MutableStateFlow<Pair<Float, Float>?>(null)
+    val priceRange: StateFlow<Pair<Float, Float>?> get() = _priceRange
+
+    private val _optionsFlow = MutableStateFlow(emptyList<FilterOption>())
+    val optionsFlow: StateFlow<List<FilterOption>> = _optionsFlow
+
+
+    val combinedFlow: Flow<List<FilterOption>> =
+        optionsFlow.combine(priceRange) { origin, range ->
+            origin.map { option ->
+                range?.let {
+                    if (option.id == 1)
+                        option.value = formatCurrencyStringToLabel(app, range.first, range.second)
+                }
+            }
+            Timber.d("new options: $origin")
+            origin
+        }.flowOn(Dispatchers.Default)
+
+    init {
+        Timber.d("init options: $options")
+        _optionsFlow.value = options
+    }
+
+    fun updatePriceRange(range: Pair<Float, Float>) {
+        Timber.d("updatePriceRange range: $range")
+        viewModelScope.launch {
+            _priceRange.value = range
+        }
+    }
+
+    override fun onCleared() {
+        Timber.d("onCleared")
+        super.onCleared()
+    }
+}

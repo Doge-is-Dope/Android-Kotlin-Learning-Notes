@@ -17,7 +17,14 @@
     <fragment
         android:id="@+id/filterPriceFragment"
         android:name="com.chunchiehliang.material3.ui.filter.FilterPriceFragment"
-        tools:layout="@layout/fragment_filter_price" />
+        tools:layout="@layout/fragment_filter_price">
 
+        <argument
+            android:name="prevMinPrice"
+            app:argType="float" />
 
+        <argument
+            android:name="prevMaxPrice"
+            app:argType="float" />
+    </fragment>
 </navigation>
