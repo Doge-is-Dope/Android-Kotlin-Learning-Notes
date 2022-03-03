@@ -1,12 +1,10 @@
 package com.chunchiehliang.material3.ui.filter
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
 import com.chunchiehliang.material3.data.FilterOption
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class FilterViewModel(val app: Application) : ViewModel() {
@@ -22,7 +20,6 @@ class FilterViewModel(val app: Application) : ViewModel() {
     private val _optionsFlow = MutableStateFlow(emptyList<FilterOption>())
     val optionsFlow: StateFlow<List<FilterOption>> = _optionsFlow
 
-
     val combinedFlow: Flow<List<FilterOption>> =
         optionsFlow.combine(priceRange) { origin, range ->
             origin.map { option ->
@@ -36,15 +33,11 @@ class FilterViewModel(val app: Application) : ViewModel() {
         }.flowOn(Dispatchers.Default)
 
     init {
-        Timber.d("init options: $options")
         _optionsFlow.value = options
     }
 
     fun updatePriceRange(range: Pair<Float, Float>) {
-        Timber.d("updatePriceRange range: $range")
-        viewModelScope.launch {
-            _priceRange.value = range
-        }
+        _priceRange.value = range
     }
 
     override fun onCleared() {

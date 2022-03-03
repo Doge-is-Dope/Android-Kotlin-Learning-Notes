@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
+import com.chunchiehliang.material3.R
 import com.chunchiehliang.material3.databinding.FragmentFilterPriceBinding
 import com.chunchiehliang.material3.utils.setNavigationResult
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 
@@ -22,6 +24,8 @@ class FilterPriceFragment : Fragment() {
     private val args by navArgs<FilterPriceFragmentArgs>()
 
     private var priceRange: Pair<Float, Float> = Pair(0F, 20_000F)
+
+    private val filterViewModel by viewModel<FilterViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,8 +57,10 @@ class FilterPriceFragment : Fragment() {
             }
 
             btnApply.setOnClickListener {
-                val filterRoot = parentFragment?.parentFragment
-                filterRoot?.findNavController()?.popBackStack()
+                parentFragment?.parentFragment?.findNavController()?.apply {
+                    previousBackStackEntry?.savedStateHandle?.set("filter_price", priceRange)
+                    popBackStack()
+                }
             }
         }
     }

@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import com.chunchiehliang.material3.data.City
+import com.chunchiehliang.material3.data.FilterOption
 import com.chunchiehliang.material3.databinding.FragmentComponentListBinding
 import org.imaginativeworld.popchillimagecarousel.model.CarouselItem
 import timber.log.Timber
@@ -101,6 +103,22 @@ class ComponentListFragment : Fragment() {
                 "\nconditions: $conditions" +
                 "\nsizes: $sizes" +
                 "\nsort: ${args.sort}")
+
+
+        findNavController().currentBackStackEntry?.savedStateHandle
+            ?.getLiveData<Pair<Float, Float>>("filter_price")
+            ?.observe(viewLifecycleOwner) {
+                Timber.d("filter_price: $it")
+                Toast.makeText(context, "min: ${it.first}, max: ${it.second}", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        findNavController().currentBackStackEntry?.savedStateHandle
+            ?.getLiveData<List<FilterOption>>("filter")
+            ?.observe(viewLifecycleOwner) {
+                Timber.d("filter: $it")
+                Toast.makeText(context, "filter: $it", Toast.LENGTH_SHORT).show()
+            }
     }
 
     override fun onDestroyView() {
@@ -109,7 +127,8 @@ class ComponentListFragment : Fragment() {
     }
 
     private fun hideViews() {
-        val lp = binding.layoutSearchButtonGroup.linearButtonGroup.layoutParams as ViewGroup.MarginLayoutParams
+        val lp =
+            binding.layoutSearchButtonGroup.linearButtonGroup.layoutParams as ViewGroup.MarginLayoutParams
         val groupMargin = lp.bottomMargin
         binding.layoutSearchButtonGroup.linearButtonGroup.animate()
             .translationY((binding.layoutSearchButtonGroup.linearButtonGroup.height + groupMargin).toFloat())

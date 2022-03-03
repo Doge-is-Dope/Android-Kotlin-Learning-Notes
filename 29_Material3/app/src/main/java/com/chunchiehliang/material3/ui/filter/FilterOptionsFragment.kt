@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.chunchiehliang.material3.data.FilterOption
 import com.chunchiehliang.material3.databinding.FragmentFilterOptionsBinding
 import com.chunchiehliang.material3.utils.getNavigationResult
 import com.chunchiehliang.material3.utils.setNavigationResult
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,7 +61,11 @@ class FilterOptionsFragment : Fragment() {
         }
 
         binding.btnApply.setOnClickListener {
-            setNavigationResult(result = "test")
+            parentFragment?.parentFragment?.findNavController()?.apply {
+                previousBackStackEntry?.savedStateHandle?.set<List<FilterOption>>("filter",
+                    filterViewModel.optionsFlow.value)
+                popBackStack()
+            }
         }
 
         getNavigationResult<Pair<Float, Float>>("price")
