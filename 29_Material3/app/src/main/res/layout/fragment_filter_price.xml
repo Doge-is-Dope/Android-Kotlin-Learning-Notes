@@ -37,6 +37,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/material_margin"
-            android:text="@string/Apply" />
+            android:text="@string/apply" />
     </LinearLayout>
 </layout>
