@@ -24,8 +24,10 @@ class FilterViewModel(val app: Application) : ViewModel() {
         optionsFlow.combine(priceRange) { origin, range ->
             origin.map { option ->
                 range?.let {
-                    if (option.id == 1)
-                        option.value = formatCurrencyStringToLabel(app, range.first, range.second)
+                    if (option.id == 1) {
+                        option.minPrice = range.first
+                        option.maxPrice = range.second
+                    }
                 }
             }
             Timber.d("new options: $origin")

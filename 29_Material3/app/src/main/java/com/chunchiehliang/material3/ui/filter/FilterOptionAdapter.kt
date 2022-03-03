@@ -37,6 +37,7 @@ class FilterOptionAdapter(private val listener: OptionListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(option: FilterOption, optionListener: OptionListener) {
             binding.filterOption = option
+            binding.tvValue.text = "${option.minPrice} ${option.maxPrice}"
             binding.listener = optionListener
             binding.executePendingBindings()
         }
