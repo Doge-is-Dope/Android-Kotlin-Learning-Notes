@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:text="@{filterOption.title}"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            tools:text="價格" />
+            tools:text="Price" />
 
         <TextView
             android:layout_width="wrap_content"

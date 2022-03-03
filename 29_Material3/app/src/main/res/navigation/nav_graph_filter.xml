@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/filterOptionsFragment">
+
+    <fragment
+        android:id="@+id/filterOptionsFragment"
+        android:name="com.chunchiehliang.material3.ui.filter.FilterOptionsFragment"
+        tools:layout="@layout/fragment_filter_options">
+        <action
+            android:id="@+id/action_to_filter_price"
+            app:destination="@id/filterPriceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/filterPriceFragment"
+        android:name="com.chunchiehliang.material3.ui.filter.FilterPriceFragment"
+        tools:layout="@layout/fragment_filter_price" />
+
+
+</navigation>

@@ -4,21 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.chunchiehliang.material3.data.FilterOption
-import com.chunchiehliang.material3.databinding.FragmentFilterBinding
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.chunchiehliang.material3.databinding.FragmentFilterOptionsBinding
 import timber.log.Timber
 
 
-class FilterOptionsFragment : BottomSheetDialogFragment() {
+class FilterOptionsFragment : Fragment() {
 
-    private var _binding: FragmentFilterBinding? = null
+    private var _binding: FragmentFilterOptionsBinding? = null
     private val binding get() = _binding!!
 
     private val optionAdapter by lazy {
         FilterOptionAdapter(OptionListener {
-            Timber.d("clicked: $it")
+            when (it.id) {
+                0 -> Timber.d("0")
+                1 -> findNavController().navigate(FilterOptionsFragmentDirections.actionToFilterPrice())
+            }
         })
     }
 
@@ -26,7 +29,7 @@ class FilterOptionsFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentFilterBinding.inflate(inflater, container, false)
+        _binding = FragmentFilterOptionsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,11 +41,17 @@ class FilterOptionsFragment : BottomSheetDialogFragment() {
             adapter = optionAdapter
         }
 
-        optionAdapter.submitList(listOf(FilterOption(0, "Recommended"), FilterOption(1, "Price")))
+        optionAdapter.submitList(options)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        val options = listOf(
+            FilterOption(0, "Category"), FilterOption(1, "Price")
+        )
     }
 }

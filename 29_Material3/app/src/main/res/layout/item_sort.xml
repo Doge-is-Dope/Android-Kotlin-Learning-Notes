@@ -23,5 +23,7 @@
         android:onClick="@{() -> listener.onClick(sortOption)}"
         android:padding="@dimen/material_margin"
         android:text="@{sortOption.title}"
-        app:setCheckedIcon="@{sortOption.selected}" />
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        app:setCheckedIcon="@{sortOption.selected}"
+        tools:text="Price"/>
 </layout>

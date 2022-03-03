@@ -18,6 +18,17 @@
     </fragment>
 
     <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.chunchiehliang.material3.ui.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.chunchiehliang.material3.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search" />
+
+
+    <fragment
         android:id="@+id/componentListFragment"
         android:name="com.chunchiehliang.material3.ui.list.ComponentListFragment"
         tools:layout="@layout/fragment_component_list">
@@ -57,29 +68,16 @@
             app:destination="@id/sortFragment" />
         <action
             android:id="@+id/action_to_filter"
-            app:destination="@id/filterOptionsFragment" />
+            app:destination="@id/filterFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.chunchiehliang.material3.ui.profile.ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
 
+    <dialog
+        android:id="@+id/filterFragment"
+        android:name="com.chunchiehliang.material3.ui.filter.FilterFragment"
+        tools:layout="@layout/fragment_filter" />
     <dialog
         android:id="@+id/sortFragment"
         android:name="com.chunchiehliang.material3.ui.sort.SortFragment"
         tools:layout="@layout/fragment_sort" />
 
-    <dialog
-        android:id="@+id/filterPriceFragment"
-        android:name="com.chunchiehliang.material3.ui.filter.FilterPriceFragment"
-        tools:layout="@layout/fragment_filter_price">
-    </dialog>
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.chunchiehliang.material3.ui.search.SearchFragment"
-        tools:layout="@layout/fragment_search" />
-    <dialog
-        android:id="@+id/filterOptionsFragment"
-        android:name="com.chunchiehliang.material3.ui.filter.FilterOptionsFragment"
-    tools:layout="@layout/fragment_filter" />
 </navigation>
