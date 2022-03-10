@@ -12,13 +12,12 @@
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.example.myapplication.ComposeActivity"
-            android:targetPackage="com.example.myapplication" />
-        <!-- If your shortcut is associated with multiple intents, include them
-             here. The last intent in the list determines what the user sees when
-             they launch this shortcut. -->
-        <categories android:name="android.shortcut.conversation" />
-        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+            android:targetClass="com.chunchiehliang.material3.MainActivity"
+            android:targetPackage="com.chunchiehliang.material3">
+            <extra
+                android:name="key"
+                android:value="value" />
+        </intent>
     </shortcut>
     <!-- Specify more shortcuts here. -->
 </shortcuts>
