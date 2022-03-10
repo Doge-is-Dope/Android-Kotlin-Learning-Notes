@@ -19,4 +19,7 @@
     <string name="recommended">Recommended</string>
     <string name="search_for_users">Search for users</string>
     <string name="price">Price</string>
+    <string name="search_shortcut_short_label">Search</string>
+    <string name="search_shortcut_long_label">Search</string>
+    <string name="search_disabled_message">Search is disabled</string>
 </resources>
