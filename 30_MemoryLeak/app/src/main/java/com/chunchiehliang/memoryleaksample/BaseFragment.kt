@@ -23,7 +23,6 @@ abstract class BaseFragment<VB : ViewDataBinding>(private val inflate: Inflate<V
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun onDestroyView() {
