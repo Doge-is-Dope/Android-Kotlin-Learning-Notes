@@ -26,7 +26,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.btnSecond.setOnClickListener {
+        binding.btnFirst.setOnClickListener {
             findNavController().navigate(R.id.action_to_second)
         }
     }
