@@ -1,11 +1,12 @@
 package com.chunchiehliang.sendbirdsample.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.chunchiehliang.sendbirdsample.BuildConfig
 import com.chunchiehliang.sendbirdsample.databinding.ActivityMainBinding
 import com.chunchiehliang.sendbirdsample.model.User
+import com.chunchiehliang.sendbirdsample.util.showToastMsg
 import com.sendbird.android.SendBird
 import com.sendbird.android.SendBirdException
 import com.sendbird.android.handlers.InitResultHandler
@@ -48,9 +49,9 @@ class MainActivity : AppCompatActivity() {
     private fun connectToSendBird(user: User) {
         SendBird.connect(user.userId.toString()) { existedUser, exception ->
             if (exception != null)
-                showToastMsg("Connection failed: ${exception.message}")
+                showToastMsg(this, "Connection failed: ${exception.message}")
             else {
-                showToastMsg("Connected: $user")
+                showToastMsg(this, "Connected: $user")
                 updateUserInfo(user)
             }
         }
@@ -59,14 +60,13 @@ class MainActivity : AppCompatActivity() {
     private fun updateUserInfo(user: User) {
         SendBird.updateCurrentUserInfo(user.name, user.avatarUrl) { exception ->
             if (exception != null) {
-                showToastMsg("Update failed: ${exception.message}")
+                showToastMsg(this, "Update failed: ${exception.message}")
             } else {
-                showToastMsg("Updated")
+                showToastMsg(this, "Updated")
+                val intent = Intent(this, ChannelListActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
-    }
-
-    private fun showToastMsg(msg: String?) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

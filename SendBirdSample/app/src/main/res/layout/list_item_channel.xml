@@ -1,52 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_channel_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginHorizontal="@dimen/material_margin"
-        android:layout_marginVertical="@dimen/material_padding"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Name" />
+    <data>
 
-    <TextView
-        android:id="@+id/text_channel_member_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/material_margin"
-        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-        app:layout_constraintBaseline_toBaselineOf="@id/tv_channel_name"
-        app:layout_constraintStart_toEndOf="@id/tv_channel_name"
-        tools:text="count" />
+        <variable
+            name="channel"
+            type="com.sendbird.android.GroupChannel" />
 
-    <TextView
-        android:id="@+id/tv_channel_recent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginHorizontal="@dimen/material_margin"
-        android:layout_marginVertical="@dimen/material_padding"
-        app:layout_constraintBottom_toTopOf="@id/divider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_channel_name"
-        tools:text="recent" />
+        <variable
+            name="listener"
+            type="com.chunchiehliang.sendbirdsample.ui.adapter.viewholder.ChannelViewHolder.ChannelListener" />
+    </data>
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/divider"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_channel_recent" />
+        android:onClick="@{() -> listener.onClick(channel)}">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_channel_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_channel_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/material_margin"
+            android:layout_marginVertical="@dimen/material_padding"
+            android:text="@{channel.members[0].nickname}"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintStart_toEndOf="@id/img_channel_img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/text_channel_last_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/material_margin"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_channel_name"
+            app:layout_constraintStart_toEndOf="@id/tv_channel_name"
+            tools:text="count" />
+
+        <TextView
+            android:id="@+id/tv_channel_recent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/material_margin"
+            android:layout_marginVertical="@dimen/material_padding"
+            android:text="@{channel.lastMessage.message}"
+            app:layout_constraintBottom_toTopOf="@id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_channel_img"
+            app:layout_constraintTop_toBottomOf="@id/tv_channel_name"
+            tools:text="recent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_channel_recent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
