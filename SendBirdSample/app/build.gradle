@@ -17,8 +17,16 @@ android {
     }
 
     buildTypes {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream()) // load local.properties
+        def sendbirdAppId = properties.getProperty('sendbird.app.id')
+
+        debug {
+            buildConfigField "String", "SENDBIRD_APP_ID", sendbirdAppId
+        }
         release {
             minifyEnabled false
+            buildConfigField "String", "SENDBIRD_APP_ID", sendbirdAppId
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
