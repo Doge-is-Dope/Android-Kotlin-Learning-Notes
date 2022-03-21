@@ -4,4 +4,6 @@
     <string name="userid">UserID</string>
     <string name="connect">Connect</string>
     <string name="create_channel">create channel</string>
+    <string name="send">Send</string>
+    <string name="enter_message">Enter Message</string>
 </resources>
