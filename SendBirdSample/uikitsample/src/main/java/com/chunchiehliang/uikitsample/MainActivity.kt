@@ -1,11 +1,13 @@
 package com.chunchiehliang.uikitsample
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.chunchiehliang.uikitsample.BuildConfig.SENDBIRD_APP_ID
 import com.chunchiehliang.uikitsample.databinding.ActivityMainBinding
+import com.chunchiehliang.uikitsample.ui.CustomChannelListActivity
 import com.sendbird.android.SendBirdException
 import com.sendbird.android.handlers.InitResultHandler
 import com.sendbird.uikit.SendBirdUIKit
@@ -29,7 +31,8 @@ class MainActivity : AppCompatActivity() {
                     inputUserId.error = "User ID is required"
                 } else {
                     clearFocus()
-                    Timber.d("channel list")
+                    initSendbird()
+                    startActivity(Intent(applicationContext, CustomChannelListActivity::class.java))
                 }
             }
 
@@ -39,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                     inputUserId.error = "User ID is required"
                 } else {
                     clearFocus()
-                    Timber.d("chat")
+                    initSendbird()
                 }
             }
         }
