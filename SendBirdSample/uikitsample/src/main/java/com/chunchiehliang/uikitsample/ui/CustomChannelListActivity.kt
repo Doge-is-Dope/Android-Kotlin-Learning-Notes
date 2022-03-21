@@ -1,6 +1,7 @@
 package com.chunchiehliang.uikitsample.ui
 
 import android.content.Intent
+import com.chunchiehliang.uikitsample.R
 import com.sendbird.uikit.activities.ChannelActivity
 import com.sendbird.uikit.activities.ChannelListActivity
 import com.sendbird.uikit.fragments.ChannelListFragment
@@ -15,13 +16,13 @@ class CustomChannelListActivity : ChannelListActivity() {
             .setGroupChannelListQuery(null)
 
             .setUseHeader(true)
-            .setHeaderTitle("Channel Name")
+            .setHeaderTitle(getString(R.string.channel_name))
 
             .setUseHeaderLeftButton(true)
             .setHeaderLeftButtonListener(null)
 //            .setHeaderLeftButtonIconResId(R.drawable.any_icon)
 
-            .setUseHeaderRightButton(true)
+            .setUseHeaderRightButton(false)
             .setHeaderRightButtonListener(null)
 //            .setHeaderRightButtonIconResId(R.drawable.any_icon)
 
@@ -29,7 +30,7 @@ class CustomChannelListActivity : ChannelListActivity() {
                 Timber.d("Test clicked: pos: $position, channel: $channel")
                 showCustomChannelActivity(channel.url)
             }
-            .setItemLongClickListener(null)
+            .setItemLongClickListener { view, position, channel -> }
 
             .build()
     }

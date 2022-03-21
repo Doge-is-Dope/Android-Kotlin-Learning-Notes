@@ -5,4 +5,5 @@
     <string name="hint_user_id">User ID</string>
 
     <string name="input_dummy_user_id">16</string>
+    <string name="channel_name">名稱</string>
 </resources>

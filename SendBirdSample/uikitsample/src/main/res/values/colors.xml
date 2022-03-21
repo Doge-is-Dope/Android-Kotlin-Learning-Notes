@@ -9,9 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="primary_500">#00bcd4</color>
-    <color name="primary_400">#26c6da</color>
-    <color name="primary_300">#4dd0e1</color>
-    <color name="primary_200">#80deea</color>
-    <color name="primary_100">#b2ebf2</color>
+<!--    <color name="primary_500">#00bcd4</color>-->
+<!--    <color name="primary_400">#26c6da</color>-->
+    <color name="primary_300">#55CECB</color>
+<!--    <color name="primary_200">#80deea</color>-->
+<!--    <color name="primary_100">#b2ebf2</color>-->
 </resources>
