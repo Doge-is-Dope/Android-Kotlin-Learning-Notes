@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">UiKitSample</string>
+    <string name="btn_to_channel_list">To channel list</string>
+    <string name="btn_to_chat">To chat</string>
+    <string name="hint_user_id">User ID</string>
+
+    <string name="input_dummy_user_id">16</string>
 </resources>
