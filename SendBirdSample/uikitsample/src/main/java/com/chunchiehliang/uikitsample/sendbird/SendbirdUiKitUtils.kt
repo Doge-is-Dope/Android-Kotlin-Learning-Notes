@@ -2,10 +2,7 @@ package com.chunchiehliang.uikitsample.sendbird
 
 import android.content.Context
 import com.chunchiehliang.uikitsample.BuildConfig
-import com.sendbird.android.GroupChannelTotalUnreadMessageCountParams
-import com.sendbird.android.SendBird
-import com.sendbird.android.SendBirdException
-import com.sendbird.android.User
+import com.sendbird.android.*
 import com.sendbird.android.handlers.InitResultHandler
 import com.sendbird.uikit.SendBirdUIKit
 import com.sendbird.uikit.adapter.SendBirdUIKitAdapter
@@ -45,8 +42,8 @@ object SendbirdUiKitUtils {
     }
 
     fun connect(
-        connectedCallback: (user: User, isOffline: Boolean) -> Unit,
-        connectFailedCallback: (e: Exception) -> Unit,
+        onSuccess: (user: User, isOffline: Boolean) -> Unit,
+        onFailure: (e: Exception) -> Unit,
     ) {
         try {
             SendBirdUIKit.connect { user, e ->
@@ -54,17 +51,17 @@ object SendbirdUiKitUtils {
                     if (user != null) {
                         // The user is offline but you can access user information stored in the local cache.
                         Timber.e("Offline: $e")
-                        connectedCallback(user, true)
+                        onSuccess(user, true)
                     } else {
                         // The user is offline and you can't access any user information stored in the local cache.
                         Timber.e("Can't retrieve user info $e")
                     }
                 } else {
-                    connectedCallback(user, false)
+                    onSuccess(user, false)
                 }
             }
         } catch (e: Exception) {
-            connectFailedCallback(e)
+            onFailure(e)
         }
     }
 }
