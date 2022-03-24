@@ -9,4 +9,5 @@
     <string name="channel_name">Channel name</string>
     <string name="btn_init_sendbird">Init</string>
     <string name="btn_connect">Connect</string>
+    <string name="btn_get_unread_count">Get unread message count</string>
 </resources>

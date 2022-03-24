@@ -1,6 +1,7 @@
 package com.chunchiehliang.uikitsample
 
 import android.app.Application
+import com.chunchiehliang.uikitsample.sendbird.SendbirdUiKitUtils
 import timber.log.Timber
 
 class BaseApplication : Application() {
@@ -8,5 +9,7 @@ class BaseApplication : Application() {
         super.onCreate()
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+
+        SendbirdUiKitUtils.initSendbird(applicationContext)
     }
 }

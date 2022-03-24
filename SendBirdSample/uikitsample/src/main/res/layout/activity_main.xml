@@ -26,13 +26,6 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
-                android:id="@+id/btn_init_sendbird"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/btn_init_sendbird" />
-
-            <Button
                 android:id="@+id/btn_connect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,11 +40,11 @@
                 android:text="@string/btn_to_channel_list" />
 
             <Button
-                android:id="@+id/btn_to_chat"
+                android:id="@+id/btn_get_unread_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/btn_to_chat" />
+                android:text="@string/btn_get_unread_count" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

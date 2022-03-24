@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.chunchiehliang.uikitsample.databinding.ActivityMainBinding
-import com.chunchiehliang.uikitsample.sendbird.SendbirdUtils.connect
-import com.chunchiehliang.uikitsample.sendbird.SendbirdUtils.initSendbird
-import com.chunchiehliang.uikitsample.ui.CustomChannelListActivity
+import com.chunchiehliang.uikitsample.sendbird.SendbirdSDKUtils
+import com.chunchiehliang.uikitsample.sendbird.SendbirdUiKitUtils
+import com.sendbird.uikit.activities.ChannelListActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,24 +17,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-            btnInitSendbird.setOnClickListener {
-                initSendbird(applicationContext)
-            }
-
             btnConnect.setOnClickListener {
-                connect(
-                    userId = "1",
-                    accessToken = "4867e748fb7707ed33c985f2e37d8b25bc22c590",
+                SendbirdUiKitUtils.connect(
                     connectedCallback = { user, isOffline -> showToastMsg("Connected user ${user.nickname}, isOffline: $isOffline") },
                     connectFailedCallback = { e -> showToastMsg("Connect failed: ${e.message}") }
                 )
             }
 
             btnToChannelList.setOnClickListener {
-                startActivity(Intent(applicationContext, CustomChannelListActivity::class.java))
+                SendbirdUiKitUtils.connect(
+                    connectedCallback = { user, isOffline ->
+                        showToastMsg("Connected user ID:  ${user.userId}, isOffline: $isOffline")
+                        startActivity(Intent(applicationContext,
+                            ChannelListActivity::class.java))
+                    },
+                    connectFailedCallback = { e -> showToastMsg("Connect failed: ${e.message}") }
+                )
             }
 
-            btnToChat.setOnClickListener {
+            btnGetUnreadCount.setOnClickListener {
+                SendbirdSDKUtils.getUnreadMsgCount {
+                    showToastMsg("Unread: $it")
+                }
             }
         }
     }
