@@ -14,45 +14,44 @@
         android:focusableInTouchMode="true"
         tools:context=".MainActivity">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_user_id"
+        <LinearLayout
+            android:id="@+id/container_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="@string/hint_user_id"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_user_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/input_dummy_user_id" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btn_to_channel_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/btn_to_channel_list"
-            app:layout_constraintBottom_toTopOf="@id/btn_to_chat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <Button
-            android:id="@+id/btn_to_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/btn_to_chat"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_to_channel_list" />
+            app:layout_constraintStart_toStartOf="parent">
 
+            <Button
+                android:id="@+id/btn_init_sendbird"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_init_sendbird" />
+
+            <Button
+                android:id="@+id/btn_connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_connect" />
+
+            <Button
+                android:id="@+id/btn_to_channel_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_to_channel_list" />
+
+            <Button
+                android:id="@+id/btn_to_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_to_chat" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

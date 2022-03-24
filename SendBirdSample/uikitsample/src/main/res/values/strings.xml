@@ -3,7 +3,10 @@
     <string name="btn_to_channel_list">To channel list</string>
     <string name="btn_to_chat">To chat</string>
     <string name="hint_user_id">User ID</string>
+    <string name="hint_nickname">Nickname</string>
 
     <string name="input_dummy_user_id">16</string>
-    <string name="channel_name">名稱</string>
+    <string name="channel_name">Channel name</string>
+    <string name="btn_init_sendbird">Init</string>
+    <string name="btn_connect">Connect</string>
 </resources>
