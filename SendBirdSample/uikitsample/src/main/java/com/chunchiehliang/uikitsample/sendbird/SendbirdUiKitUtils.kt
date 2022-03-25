@@ -64,4 +64,11 @@ object SendbirdUiKitUtils {
             onFailure(e)
         }
     }
+
+    fun disconnect(onSuccess: () -> Unit) {
+        SendBirdUIKit.disconnect {
+            Timber.d("disconnected")
+            onSuccess()
+        }
+    }
 }

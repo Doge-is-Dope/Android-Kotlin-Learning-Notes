@@ -1,12 +1,9 @@
 package com.chunchiehliang.uikitsample.ui
 
-import android.content.DialogInterface
-import androidx.appcompat.app.AlertDialog
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.chunchiehliang.uikitsample.sendbird.SendbirdUiKitUtils
 import com.sendbird.uikit.activities.ChannelActivity
-import com.sendbird.uikit.consts.StringSet
 import com.sendbird.uikit.fragments.ChannelFragment
-import java.util.*
+import timber.log.Timber
 
 
 class CustomChannelActivity : ChannelActivity() {
@@ -25,7 +22,6 @@ class CustomChannelActivity : ChannelActivity() {
             .setUseHeaderLeftButton(true)
 //            .setInputLeftButtonIconResId(R.drawable.icon_add)
 //            .setHeaderLeftButtonIconResId(R.drawable.icon_arrow_left)
-//            .setHeaderLeftButtonListener(null)
 
             // Input
 //            .setInputRightButtonIconResId(R.drawable.icon_send)
@@ -34,11 +30,11 @@ class CustomChannelActivity : ChannelActivity() {
 
 
 //            .setMessageListAdapter(CustomMessageListAdapter(useMessageGroupUI))
-            .setListItemClickListener(null)
-            .setListItemLongClickListener { _, _, _, _ -> }
-
-
-            .setMessageListParams(null)
+//            .setListItemClickListener(null)
+//            .setListItemLongClickListener { _, _, _, _ -> }
+//
+//
+//            .setMessageListParams(null)
 //            .setUseMessageGroupUI()
             .build()
     }
@@ -57,4 +53,18 @@ class CustomChannelActivity : ChannelActivity() {
 //            .create()
 //            .show()
 //    }
+
+//    override fun onPause() {
+//        super.onPause()
+//        SendbirdUiKitUtils.disconnect {
+//            Timber.d("test - disconnected")
+//        }
+//    }
+
+    override fun onResume() {
+        super.onResume()
+        SendbirdUiKitUtils.connect(onSuccess = { user, isOffline ->
+            Timber.d("test - connected: $user, isOffline: $isOffline")
+        }, onFailure = {})
+    }
 }

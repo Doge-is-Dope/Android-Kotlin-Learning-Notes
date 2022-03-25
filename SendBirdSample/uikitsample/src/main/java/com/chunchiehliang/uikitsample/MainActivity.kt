@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chunchiehliang.uikitsample.databinding.ActivityMainBinding
 import com.chunchiehliang.uikitsample.sendbird.SendbirdSDKUtils
 import com.chunchiehliang.uikitsample.sendbird.SendbirdUiKitUtils
+import com.chunchiehliang.uikitsample.ui.CustomChannelActivity
+import com.chunchiehliang.uikitsample.ui.CustomChannelListActivity
 import com.sendbird.uikit.activities.ChannelActivity
-import com.sendbird.uikit.activities.ChannelListActivity
 import timber.log.Timber
 
 
@@ -30,8 +31,12 @@ class MainActivity : AppCompatActivity() {
                 SendbirdUiKitUtils.connect(
                     onSuccess = { user, isOffline ->
                         showToastMsg("Connected user ID:  ${user.userId}, isOffline: $isOffline")
-                        startActivity(Intent(applicationContext,
-                            ChannelListActivity::class.java))
+                        startActivity(
+                            Intent(
+                                applicationContext,
+                                CustomChannelListActivity::class.java
+                            )
+                        )
                     },
                     onFailure = { e -> showToastMsg("Connect failed: ${e.message}") }
                 )
@@ -46,7 +51,11 @@ class MainActivity : AppCompatActivity() {
                             userIds = listOf("1", "7"),
                             onSuccess = {
                                 Timber.d("created successfully: $it")
-                                val intent = ChannelActivity.newIntent(applicationContext, it.url)
+                                val intent = ChannelActivity.newIntentFromCustomActivity(
+                                    applicationContext,
+                                    CustomChannelActivity::class.java,
+                                    it.url
+                                )
                                 startActivity(intent)
                             }, onFailure = {
                                 showToastMsg("Failed to create channel: $it")
