@@ -10,7 +10,7 @@ import com.sendbird.uikit.interfaces.UserInfo
 import timber.log.Timber
 
 object SendbirdUiKitUtils {
-    fun initSendbird(context: Context) {
+    fun initSendbird(context: Context, onSuccess: () -> Unit) {
         SendBirdUIKit.init(object : SendBirdUIKitAdapter {
             override fun getAppId(): String = BuildConfig.SENDBIRD_APP_ID
 
@@ -31,6 +31,7 @@ object SendbirdUiKitUtils {
 
                 override fun onInitSucceed() {
                     Timber.d("onInitSucceed")
+                    onSuccess()
                 }
 
                 override fun onMigrationStarted() {

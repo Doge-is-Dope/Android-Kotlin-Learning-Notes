@@ -20,49 +20,46 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-            btnConnect.setOnClickListener {
-                SendbirdUiKitUtils.connect(
-                    onSuccess = { user, isOffline -> showToastMsg("Connected user ${user.nickname}, isOffline: $isOffline") },
-                    onFailure = { e -> showToastMsg("Connect failed: ${e.message}") }
-                )
-            }
-
             btnToChannelList.setOnClickListener {
-                SendbirdUiKitUtils.connect(
-                    onSuccess = { user, isOffline ->
-                        showToastMsg("Connected user ID:  ${user.userId}, isOffline: $isOffline")
-                        startActivity(
-                            Intent(
-                                applicationContext,
-                                CustomChannelListActivity::class.java
+                SendbirdUiKitUtils.initSendbird(applicationContext) {
+                    SendbirdUiKitUtils.connect(
+                        onSuccess = { user, isOffline ->
+                            showToastMsg("Connected user ID:  ${user.userId}, isOffline: $isOffline")
+                            startActivity(
+                                Intent(
+                                    applicationContext,
+                                    CustomChannelListActivity::class.java
+                                )
                             )
-                        )
-                    },
-                    onFailure = { e -> showToastMsg("Connect failed: ${e.message}") }
-                )
+                        },
+                        onFailure = { e -> showToastMsg("Connect failed: ${e.message}") }
+                    )
+                }
             }
 
             btnCreateChannel.setOnClickListener {
-                SendbirdUiKitUtils.connect(
-                    onSuccess = { user, isOffline ->
-                        showToastMsg("Connected user ID:  ${user.userId}, isOffline: $isOffline")
+                SendbirdUiKitUtils.initSendbird(applicationContext) {
+                    SendbirdUiKitUtils.connect(
+                        onSuccess = { user, isOffline ->
+                            showToastMsg("Connected user ID:  ${user.userId}, isOffline: $isOffline")
 
-                        SendbirdSDKUtils.createChannel(
-                            userIds = listOf("1", "7"),
-                            onSuccess = {
-                                Timber.d("created successfully: $it")
-                                val intent = ChannelActivity.newIntentFromCustomActivity(
-                                    applicationContext,
-                                    CustomChannelActivity::class.java,
-                                    it.url
-                                )
-                                startActivity(intent)
-                            }, onFailure = {
-                                showToastMsg("Failed to create channel: $it")
-                            })
-                    },
-                    onFailure = { e -> showToastMsg("Connect failed: ${e.message}") }
-                )
+                            SendbirdSDKUtils.createChannel(
+                                userIds = listOf("1", "7"),
+                                onSuccess = {
+                                    Timber.d("created successfully: $it")
+                                    val intent = ChannelActivity.newIntentFromCustomActivity(
+                                        applicationContext,
+                                        CustomChannelActivity::class.java,
+                                        it.url
+                                    )
+                                    startActivity(intent)
+                                }, onFailure = {
+                                    showToastMsg("Failed to create channel: $it")
+                                })
+                        },
+                        onFailure = { e -> showToastMsg("Connect failed: ${e.message}") }
+                    )
+                }
             }
 
             btnGetUnreadCount.setOnClickListener {
