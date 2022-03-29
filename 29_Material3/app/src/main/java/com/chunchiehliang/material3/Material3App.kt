@@ -2,6 +2,7 @@ package com.chunchiehliang.material3
 
 import android.app.Application
 import com.chunchiehliang.material3.ui.filter.FilterViewModel
+import com.chunchiehliang.material3.ui.profile.ProfileViewModel
 import com.google.android.material.color.DynamicColors
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -24,5 +25,6 @@ class Material3App : Application() {
 
     private val appModule = module {
         viewModel { FilterViewModel(get()) }
+        viewModel { ProfileViewModel() }
     }
 }
