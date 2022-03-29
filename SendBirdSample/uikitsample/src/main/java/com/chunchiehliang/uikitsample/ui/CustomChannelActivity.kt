@@ -1,5 +1,9 @@
 package com.chunchiehliang.uikitsample.ui
 
+import android.app.Activity
+import android.content.Intent
+import android.widget.Toast
+import com.chunchiehliang.uikitsample.MainActivity
 import com.chunchiehliang.uikitsample.sendbird.SendbirdUiKitUtils
 import com.sendbird.uikit.activities.ChannelActivity
 import com.sendbird.uikit.fragments.ChannelFragment
@@ -7,6 +11,7 @@ import timber.log.Timber
 
 
 class CustomChannelActivity : ChannelActivity() {
+
     override fun createChannelFragment(channelUrl: String): ChannelFragment {
         return ChannelFragment.Builder(channelUrl)
             .setCustomChannelFragment(CustomChannelFragment())
@@ -22,6 +27,10 @@ class CustomChannelActivity : ChannelActivity() {
             .setUseHeaderLeftButton(true)
 //            .setInputLeftButtonIconResId(R.drawable.icon_add)
 //            .setHeaderLeftButtonIconResId(R.drawable.icon_arrow_left)
+            .setHeaderLeftButtonListener {
+                setResult(RESULT_OK, Intent().putExtra("CLOSE_DIRECTLY", true))
+                finish()
+            }
 
             // Input
 //            .setInputRightButtonIconResId(R.drawable.icon_send)
@@ -52,13 +61,6 @@ class CustomChannelActivity : ChannelActivity() {
 //            }
 //            .create()
 //            .show()
-//    }
-
-//    override fun onPause() {
-//        super.onPause()
-//        SendbirdUiKitUtils.disconnect {
-//            Timber.d("test - disconnected")
-//        }
 //    }
 
     override fun onResume() {

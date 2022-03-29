@@ -9,5 +9,7 @@ class BaseApplication : Application() {
         super.onCreate()
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+
+        SendbirdUiKitUtils.initSendbird(this){}
     }
 }
