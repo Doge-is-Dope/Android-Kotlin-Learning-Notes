@@ -13,6 +13,8 @@ import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import com.chunchiehliang.storagesample.databinding.ActivityMainBinding
 
 
 /** The request code for requesting [Manifest.permission.READ_EXTERNAL_STORAGE] permission. */
@@ -21,14 +23,24 @@ private const val READ_EXTERNAL_STORAGE_REQUEST = 0x1045
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by viewModels()
-
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val galleryAdapter = GalleryAdapter { image ->
+            Log.d("MainActivity", "Clicked: $image")
+        }
+
+        binding.gallery.also { view ->
+            view.layoutManager = GridLayoutManager(this, 2)
+            view.adapter = galleryAdapter
+        }
 
         viewModel.images.observe(this) { images ->
-            Log.d("MainActivity", "images: $images")
+            galleryAdapter.submitList(images)
         }
 
         if (!haveStoragePermission()) {
