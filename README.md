@@ -30,7 +30,8 @@
 26. ComposeSample: Android Compose
 27. NavigationSample: Navigation component
 28. MotionSample: Material motion
-29. MaterialDesignSample: Material Design 3 (Android 12), [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
+29. MaterialDesignSample: Material Design 3 (Android 12), 
+31. DataStoreSample: PrefrenceDataStore
 
 ---
 
