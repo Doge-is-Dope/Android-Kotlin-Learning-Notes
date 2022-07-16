@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chunchiehliang.kotlinflowsample.data.model.Book
 import com.chunchiehliang.kotlinflowsample.data.repository.HomeRepository
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repo: HomeRepository) : ViewModel() {
@@ -19,16 +19,33 @@ class HomeViewModel(private val repo: HomeRepository) : ViewModel() {
         }
     }
 
-    // Simulate fetching books from API
-    fun fetchBookList() {
+
+    fun getSelectedBooks() {
         _uiState.value = UiState.Loading
         viewModelScope.launch {
-            repo.getBooks().onSuccess { books ->
-                _uiState.value = UiState.Success(books)
-            }.onFailure {
-                _uiState.value = UiState.Error(it)
+            combineTransform(fetchBooks(), fetchSelected()) { books, selected ->
+                books.forEach { book -> book.isSelected = book.id in selected }
+                emit(books)
             }
+                .flowOn(Dispatchers.Default)
+                .catch { _uiState.value = UiState.Error(it) }
+                .collectLatest {
+                    _uiState.value = UiState.Success(it)
+                }
         }
+    }
+
+    // Simulate fetching books from API
+    private fun fetchBooks(): Flow<List<Book>> = flow {
+        repo.getBooks()
+            .onSuccess { books -> emit(books) }
+            .onFailure { throw it }
+    }
+
+    private fun fetchSelected(): Flow<List<Int>> = flow {
+        repo.getSelectedBooks()
+            .onSuccess { selected -> emit(selected) }
+            .onFailure { throw it }
     }
 }
 

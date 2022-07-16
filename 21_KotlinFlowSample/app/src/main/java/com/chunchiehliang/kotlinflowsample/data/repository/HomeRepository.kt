@@ -34,10 +34,10 @@ class HomeRepository(private val catFactService: CatFactService) {
      */
     suspend fun getSelectedBooks(): Result<List<Int>> = withContext(Dispatchers.IO) {
         try {
-            val total = (1..2).random()
-            val res = mutableListOf<Int>()
-            for (count in 1..total) res.add((1..BOOKS.size).random())
-            delay(3000)
+            delay(500)
+            val total = (1..5).random()
+            if (total % 2 == 0) throw Exception("Total selected cannot be $total")
+            val res = List(total) { ((1..Int.MAX_VALUE).random() % 5) + 1 }
             Result.success(res)
         } catch (e: Exception) {
             Result.failure(e)

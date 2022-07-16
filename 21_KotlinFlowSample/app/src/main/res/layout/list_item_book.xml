@@ -17,8 +17,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> listener.onClick(book)}"
         android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> listener.onClick(book)}"
         android:padding="16dp">
 
         <TextView
@@ -45,6 +45,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_id"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="abc" />
+            tools:text="abc"
+            app:drawableEndCompat="@{book.selected ? @drawable/ic_check : null}"
+            app:drawableTint="?colorPrimary" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
