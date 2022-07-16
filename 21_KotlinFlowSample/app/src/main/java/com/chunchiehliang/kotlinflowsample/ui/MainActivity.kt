@@ -32,11 +32,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         homeViewModel.fetchBookList()
-        homeViewModel.fetchSelectedBooks()
 
         lifecycleScope.launch {
-            homeViewModel.uiState
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+            homeViewModel.uiState.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect { uiState ->
                     when (uiState) {
                         is UiState.Loading -> binding.progress.isVisible = true

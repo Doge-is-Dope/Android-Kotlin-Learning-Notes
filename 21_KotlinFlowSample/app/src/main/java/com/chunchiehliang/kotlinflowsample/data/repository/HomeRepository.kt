@@ -17,12 +17,30 @@ class HomeRepository(private val catFactService: CatFactService) {
     }
 
 
-    suspend fun getBooks(): Result<List<Book>> = try {
-        withContext(Dispatchers.IO) {
-            delay(5000)
+    /**
+     * Get a list of [Book]s
+     */
+    suspend fun getBooks(): Result<List<Book>> = withContext(Dispatchers.IO) {
+        try {
+            delay(2000)
             Result.success(BOOKS)
+        } catch (e: Exception) {
+            Result.failure(e)
         }
-    } catch (e: Exception) {
-        Result.failure(e)
+    }
+
+    /**
+     * Get the selected [Book] IDs
+     */
+    suspend fun getSelectedBooks(): Result<List<Int>> = withContext(Dispatchers.IO) {
+        try {
+            val total = (1..2).random()
+            val res = mutableListOf<Int>()
+            for (count in 1..total) res.add((1..BOOKS.size).random())
+            delay(3000)
+            Result.success(res)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }
