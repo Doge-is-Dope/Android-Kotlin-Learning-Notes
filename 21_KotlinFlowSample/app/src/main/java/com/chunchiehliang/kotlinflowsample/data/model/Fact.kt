@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlinflowsample.data.api
+package com.chunchiehliang.kotlinflowsample.data.model
 
 import com.squareup.moshi.Json
 
